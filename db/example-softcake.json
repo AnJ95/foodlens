@@ -1,0 +1,902 @@
+{
+    "_id": "4001518722930",
+    "data_sources_tags": ["app-yuka", "apps"],
+    "nova_groups_tags": ["en:4-ultra-processed-food-and-drink-products"],
+    "product_name_debug_tags": [],
+    "pnns_groups_1_tags": ["unknown", "missing-category"],
+    "brands_debug_tags": [],
+    "nutriments": {
+        "sugars_unit": "g",
+        "saturated-fat_unit": "g",
+        "fiber_unit": "g",
+        "saturated-fat": 6,
+        "saturated-fat_serving": 0.72,
+        "carbohydrates_unit": "g",
+        "nova-group": 4,
+        "fat_serving": 1.2,
+        "nova-group_100g": 4,
+        "salt_serving": 0.018000000000000002,
+        "proteins_serving": 0.36,
+        "fiber_value": 2,
+        "fiber_serving": 0.24000000000000002,
+        "salt_100g": 0.15,
+        "proteins_unit": "g",
+        "energy_serving": 191,
+        "fat_100g": 10,
+        "nova-group_serving": 4,
+        "energy_value": 381,
+        "sodium": 0.06,
+        "saturated-fat_100g": 6,
+        "proteins": 3,
+        "salt_value": 0.15,
+        "fat_value": 10,
+        "saturated-fat_value": 6,
+        "proteins_100g": 3,
+        "fat": 10,
+        "fiber": 2,
+        "carbohydrates": 69,
+        "sodium_serving": 0.0072,
+        "energy": 1594,
+        "sugars_serving": 6.24,
+        "sugars": 52,
+        "sodium_value": 0.06,
+        "sodium_100g": 0.06,
+        "fiber_100g": 2,
+        "energy_unit": "kcal",
+        "sugars_100g": 52,
+        "proteins_value": 3,
+        "sugars_value": 52,
+        "salt": 0.15,
+        "carbohydrates_100g": 69,
+        "salt_unit": "g",
+        "fat_unit": "g",
+        "sodium_unit": "g",
+        "energy_100g": 1594,
+        "carbohydrates_value": 69,
+        "carbohydrates_serving": 8.28
+    },
+    "nutrition_data_per": "100g",
+    "additives_old_tags": ["en:e471", "en:e322"],
+    "last_edit_dates_tags": ["2019-06-08", "2019-06", "2019"],
+    "additives_prev_original_tags": ["en:e420ii", "en:e440", "en:e330", "en:e471", "en:e322", "en:e503ii", "en:e500ii", "en:e331i"],
+    "emb_codes_tags": [],
+    "last_image_dates_tags": ["2019-04-02", "2019-04", "2019"],
+    "ingredients_n_tags": ["27", "21-30"],
+    "labels_prev_tags": ["en:fsc", "en:green-dot", "en:made-in-germany"],
+    "ingredients_original_tags": ["en:sugar", "en:glucose-fructose-syrup", "de:Orangensaft aus Orangensaftkonzentrat", "en:wheat-flour", "en:cocoa-paste", "de:flüssiges _Vollei_", "en:palm-fat", "en:cocoa-butter", "en:stabiliser", "en:e420ii", "en:wheat-starch", "en:gelling-agent", "en:e440a", "en:acid", "en:e330", "en:emulsifier", "de:Tapiokastärke", "en:propellent-gas", "de:Orangenschalenöl", "en:acidity-regulator", "en:e331i", "en:salt", "en:natural-vanilla-flavouring", "en:e471", "en:e322", "en:e503ii", "en:e500ii"],
+    "nutrition_score_debug": "no score when the product does not have a category",
+    "origins": "",
+    "product_name_de": "Soft Cake Orange",
+    "ingredients": [{
+        "vegan": "yes",
+        "text": "Zucker",
+        "rank": 1,
+        "vegetarian": "yes",
+        "id": "en:sugar"
+    }, {
+        "vegan": "yes",
+        "text": "Glukose-Fruktose-Sirup",
+        "rank": 2,
+        "id": "en:glucose-fructose-syrup",
+        "vegetarian": "yes"
+    }, {
+        "percent": "11",
+        "id": "de:Orangensaft aus Orangensaftkonzentrat",
+        "text": "Orangensaft aus Orangensaftkonzentrat",
+        "rank": 3
+    }, {
+        "text": "_Weizenmehl_",
+        "rank": 4,
+        "vegan": "yes",
+        "vegetarian": "yes",
+        "id": "en:wheat-flour"
+    }, {
+        "vegetarian": "yes",
+        "id": "en:cocoa-paste",
+        "text": "Kakaomasse",
+        "rank": 5,
+        "vegan": "yes"
+    }, {
+        "id": "de:flüssiges _Vollei_",
+        "percent": "6",
+        "rank": 6,
+        "text": "flüssiges _Vollei_"
+    }, {
+        "from_palm_oil": "yes",
+        "vegetarian": "yes",
+        "id": "en:palm-fat",
+        "rank": 7,
+        "text": "Palmfett",
+        "vegan": "yes"
+    }, {
+        "text": "Kakaobutter",
+        "rank": 8,
+        "vegan": "yes",
+        "vegetarian": "yes",
+        "id": "en:cocoa-butter"
+    }, {
+        "rank": 9,
+        "text": "Stabilisator",
+        "id": "en:stabiliser"
+    }, {
+        "rank": 10,
+        "text": "Sorbitsirup",
+        "vegan": "yes",
+        "vegetarian": "yes",
+        "id": "en:e420ii"
+    }, {
+        "vegetarian": "yes",
+        "id": "en:wheat-starch",
+        "text": "_Weizenstärke_",
+        "rank": 11,
+        "vegan": "yes"
+    }, {
+        "rank": 12,
+        "text": "Geliermittel",
+        "id": "en:gelling-agent"
+    }, {
+        "id": "en:e440a",
+        "vegetarian": "yes",
+        "vegan": "yes",
+        "rank": 13,
+        "text": "Pektin"
+    }, {
+        "id": "en:acid",
+        "rank": 14,
+        "text": "Säuerungsmittel"
+    }, {
+        "vegetarian": "yes",
+        "id": "en:e330",
+        "vegan": "yes",
+        "rank": 15,
+        "text": "Citronensäure"
+    }, {
+        "rank": 16,
+        "text": "Emulgatoren",
+        "id": "en:emulsifier"
+    }, {
+        "id": "de:Tapiokastärke",
+        "rank": 17,
+        "text": "Tapiokastärke"
+    }, {
+        "text": "Backtriebmittel",
+        "rank": 18,
+        "id": "en:propellent-gas"
+    }, {
+        "rank": 19,
+        "text": "Orangenschalenöl",
+        "id": "de:Orangenschalenöl"
+    }, {
+        "id": "en:acidity-regulator",
+        "text": "Säureregulator",
+        "rank": 20
+    }, {
+        "vegan": "yes",
+        "text": "Mononatriumcitrat",
+        "rank": 21,
+        "vegetarian": "yes",
+        "id": "en:e331i"
+    }, {
+        "vegetarian": "yes",
+        "id": "en:salt",
+        "vegan": "yes",
+        "text": "Speisesalz",
+        "rank": 22
+    }, {
+        "vegetarian": "yes",
+        "id": "en:natural-vanilla-flavouring",
+        "rank": 23,
+        "text": "natürliches Vanillearoma",
+        "vegan": "yes"
+    }, {
+        "id": "en:e471",
+        "vegetarian": "maybe",
+        "from_palm_oil": "maybe",
+        "vegan": "maybe",
+        "text": "e471"
+    }, {
+        "vegetarian": "maybe",
+        "id": "en:e322",
+        "text": "Lecithine",
+        "labels": "en:contains-soy",
+        "vegan": "maybe"
+    }, {
+        "text": "Ammoniumhydrogencarbonat",
+        "vegan": "yes",
+        "vegetarian": "yes",
+        "id": "en:e503ii"
+    }, {
+        "vegetarian": "yes",
+        "id": "en:e500ii",
+        "text": "Natriumhydrogencarbonat",
+        "vegan": "yes"
+    }],
+    "link": "",
+    "complete": 0,
+    "nutrient_levels": {},
+    "ingredients_hierarchy": ["en:sugar", "en:glucose-fructose-syrup", "en:glucose", "en:fructose", "de:Orangensaft aus Orangensaftkonzentrat", "en:wheat-flour", "en:cereal", "en:wheat", "en:flour", "en:cereal-flour", "en:cocoa-paste", "en:cocoa", "de:flüssiges _Vollei_", "en:palm-fat", "en:oil", "en:vegetable-oil-and-fat", "en:palm-oil-and-fat", "en:cocoa-butter", "en:stabiliser", "en:e420ii", "en:e420", "en:wheat-starch", "en:starch", "en:gelling-agent", "en:e440a", "en:acid", "en:e330", "en:emulsifier", "de:Tapiokastärke", "en:propellent-gas", "de:Orangenschalenöl", "en:acidity-regulator", "en:e331i", "en:e331", "en:salt", "en:natural-vanilla-flavouring", "en:flavouring", "en:natural-flavouring", "en:vanilla-flavouring", "en:e471", "en:e322", "en:e503ii", "en:e503", "en:e500ii", "en:e500"],
+    "brands_tags": ["griesson"],
+    "no_nutrition_data": "",
+    "last_image_t": 1554160370,
+    "additives_n": 8,
+    "packaging_debug_tags": [],
+    "interface_version_created": "20120622",
+    "countries_hierarchy": ["en:france", "en:germany"],
+    "scans_n": 2,
+    "states": "en:to-be-completed, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-to-be-completed, en:packaging-code-to-be-completed, en:characteristics-to-be-completed, en:categories-to-be-completed, en:brands-completed, en:packaging-to-be-completed, en:quantity-completed, en:product-name-completed, en:photos-validated, en:photos-uploaded",
+    "last_editor": "date-limite-app",
+    "categories_lc": "de",
+    "traces": "en:nuts,de:cashewnuss,de:mandeln-milch",
+    "completeness": 0.6,
+    "ingredients_debug": ["Zucker", ",", null, null, null, " Glukose-Fruktose-Sirup", ",", null, null, null, " Orangensaft aus Orangensaftkonzentrat ", "(", "(", null, null, "11%)", ",", null, null, null, " _Weizenmehl_", ",", null, null, null, " Kakaomasse", ",", null, null, null, " flüssiges _Vollei_ ", "(", "(", null, null, "6%)", ",", null, null, null, " Palmfett", ",", null, null, null, " Kakaobutter", ",", null, null, null, " Stabilisator ", "(", "(", null, null, "Sorbitsirup)", ",", null, null, null, " _Weizenstärke_", ",", null, null, null, " Geliermittel ", "(", "(", null, null, "Pektin)", ",", null, null, null, " Säuerungsmittel ", "(", "(", null, null, "Citronensäure)", ",", null, null, null, " Emulgatoren ", "(", "(", null, null, "", " - ", " - ", " - ", null, "e471", " - ", " - ", " - ", null, "", ",", null, null, null, " Lecithine ", "(", "(", null, null, "_Soja_)", ",", null, null, null, " Tapiokastärke", ",", null, null, null, " Backtriebmittel ", "(", "(", null, null, "Ammoniumhydrogencarbonat", ",", null, null, null, " Natriumhydrogencarbonat)", ",", null, null, null, " Orangenschalenöl", ",", null, null, null, " Säureregulator ", "(", "(", null, null, "Mononatriumcitrat)", ",", null, null, null, " Speisesalz", ",", null, null, null, " natürliches Vanillearoma"],
+    "quantity_debug_tags": [],
+    "quality_tags": [],
+    "other_nutritional_substances_tags": [],
+    "traces_from_user": "(de)Schalenfrüchte,de:cashewnuss,de:mandeln-milch",
+    "id": "4001518722930",
+    "states_tags": ["en:to-be-completed", "en:nutrition-facts-completed", "en:ingredients-completed", "en:expiration-date-to-be-completed", "en:packaging-code-to-be-completed", "en:characteristics-to-be-completed", "en:categories-to-be-completed", "en:brands-completed", "en:packaging-to-be-completed", "en:quantity-completed", "en:product-name-completed", "en:photos-validated", "en:photos-uploaded"],
+    "traces_hierarchy": ["en:nuts", "de:cashewnuss", "de:mandeln-milch"],
+    "languages": {
+        "en:german": 5,
+        "en:french": 4
+    },
+    "emb_codes_debug_tags": [],
+    "ingredients_text_debug": "Zucker, Glukose-Fruktose-Sirup, Orangensaft aus Orangensaftkonzentrat (11%), _Weizenmehl_, Kakaomasse, flüssiges _Vollei_ (6%), Palmfett, Kakaobutter, Stabilisator (Sorbitsirup), _Weizenstärke_, Geliermittel (Pektin), Säuerungsmittel (Citronensäure), Emulgatoren ( - e471 - , Lecithine (_Soja_), Tapiokastärke, Backtriebmittel (Ammoniumhydrogencarbonat, Natriumhydrogencarbonat), Orangenschalenöl, Säureregulator (Mononatriumcitrat), Speisesalz, natürliches Vanillearoma",
+    "popularity_tags": ["top-100000-scans-2019", "top-country-de-scans-2019"],
+    "labels_hierarchy": ["en:fsc", "en:green-dot", "en:made-in-germany"],
+    "creator": "date-limite-app",
+    "_keywords": ["cake", "made-in-germany", "fsc", "soft", "dot", "griesson", "green", "orange"],
+    "nutrition_data_prepared_per": "100g",
+    "amino_acids_tags": [],
+    "correctors_tags": ["yuka.Zm9vRUlxUVB2UFluaHNFUThDeU8vZkJzbkx5d2VHNkhDOVFoSVE9PQ", "openfoodfacts-contributors", "fiat-lux", "roboto-app", "date-limite-app"],
+    "nucleotides_tags": [],
+    "codes_tags": ["code-13", "4001518722xxx", "400151872xxxx", "40015187xxxxx", "4001518xxxxxx", "400151xxxxxxx", "40015xxxxxxxx", "4001xxxxxxxxx", "400xxxxxxxxxx", "40xxxxxxxxxxx", "4xxxxxxxxxxxx"],
+    "ingredients_text": "Zucker, Glukose-Fruktose-Sirup, Orangensaft aus Orangensaftkonzentrat (11%), _Weizenmehl_, Kakaomasse, flüssiges _Vollei_ (6%), Palmfett, Kakaobutter, Stabilisator (Sorbitsirup), _Weizenstärke_, Geliermittel (Pektin), Säuerungsmittel (Citronensäure), Emulgatoren (E471, Lecithine (_Soja_), Tapiokastärke, Backtriebmittel (Ammoniumhydrogencarbonat, Natriumhydrogencarbonat), Orangenschalenöl, Säureregulator (Mononatriumcitrat), Speisesalz, natürliches Vanillearoma",
+    "pnns_groups_2_tags": ["unknown", "missing-category"],
+    "product_quantity": 300,
+    "countries": "Frankreich, Deutschland",
+    "brands": "Griesson",
+    "purchase_places_tags": ["deutschland"],
+    "languages_tags": ["en:german", "en:french", "en:2", "en:multilingual"],
+    "additives_old_n": 2,
+    "allergens_from_ingredients": "Weizenmehl, Vollei, Weizenstärke, Soja",
+    "unique_scans_n": 2,
+    "manufacturing_places_tags": [],
+    "nutrition_score_beverage": 0,
+    "lang_debug_tags": [],
+    "traces_debug_tags": [],
+    "ingredients_from_palm_oil_tags": [],
+    "packaging_tags": [],
+    "ingredients_from_or_that_may_be_from_palm_oil_n": 1,
+    "ingredients_from_palm_oil_n": 0,
+    "quantity": "300 g",
+    "vitamins_prev_tags": [],
+    "lc": "de",
+    "ingredients_text_debug_tags": [],
+    "labels": "FSC, Green Dot, en:made-in-germany",
+    "ingredients_that_may_be_from_palm_oil_n": 1,
+    "packaging": "",
+    "stores_tags": [],
+    "link_debug_tags": [],
+    "languages_codes": {
+        "de": 5,
+        "fr": 4
+    },
+    "minerals_tags": [],
+    "entry_dates_tags": ["2016-09-17", "2016-09", "2016"],
+    "origins_debug_tags": [],
+    "purchase_places_debug_tags": [],
+    "nutrition_data_per_debug_tags": [],
+    "nutrient_levels_tags": [],
+    "labels_prev_hierarchy": ["en:fsc", "en:green-dot", "en:made-in-germany"],
+    "allergens_tags": ["en:eggs", "en:gluten", "en:soybeans"],
+    "purchase_places": "Deutschland",
+    "emb_codes": "",
+    "stores_debug_tags": [],
+    "minerals_prev_tags": [],
+    "last_modified_by": "date-limite-app",
+    "ingredients_text_with_allergens": "Zucker, Glukose-Fruktose-Sirup, Orangensaft aus Orangensaftkonzentrat (11%), <span class=\"allergen\">Weizenmehl</span>, Kakaomasse, flüssiges <span class=\"allergen\">Vollei</span> (6%), Palmfett, Kakaobutter, Stabilisator (Sorbitsirup), <span class=\"allergen\">Weizenstärke</span>, Geliermittel (Pektin), Säuerungsmittel (Citronensäure), Emulgatoren (E471, Lecithine (<span class=\"allergen\">Soja</span>), Tapiokastärke, Backtriebmittel (Ammoniumhydrogencarbonat, Natriumhydrogencarbonat), Orangenschalenöl, Säureregulator (Mononatriumcitrat), Speisesalz, natürliches Vanillearoma",
+    "nova_group": 4,
+    "unknown_nutrients_tags": [],
+    "allergens": "",
+    "serving_quantity": 12,
+    "nova_group_tags": ["not-applicable"],
+    "categories_tags": [],
+    "product_name_fr": "Soft Cake Orange",
+    "languages_hierarchy": ["en:german", "en:french"],
+    "allergens_hierarchy": ["en:eggs", "en:gluten", "en:soybeans"],
+    "categories": "",
+    "additives_original_tags": ["en:e420ii", "en:e440i", "en:e330", "en:e471", "en:e322", "en:e503ii", "en:e500ii", "en:e331i"],
+    "origins_tags": [],
+    "nova_groups": 4,
+    "pnns_groups_1": "unknown",
+    "editors_tags": ["fiat-lux", "roboto-app", "tacite-mass-editor", "yuka.Zm9vRUlxUVB2UFluaHNFUThDeU8vZkJzbkx5d2VHNkhDOVFoSVE9PQ", "kiliweb", "openfoodfacts-contributors", "date-limite-app", "foodrepo"],
+    "additives_tags": ["en:e322", "en:e330", "en:e331", "en:e331i", "en:e420", "en:e420ii", "en:e440", "en:e440i", "en:e471", "en:e500", "en:e500ii", "en:e503", "en:e503ii"],
+    "ingredients_that_may_be_from_palm_oil_tags": ["e471-mono-et-diglycerides-d-acides-gras-alimentaires"],
+    "product_name": "Soft Cake Orange",
+    "update_key": "ing3",
+    "code": "4001518722930",
+    "states_hierarchy": ["en:to-be-completed", "en:nutrition-facts-completed", "en:ingredients-completed", "en:expiration-date-to-be-completed", "en:packaging-code-to-be-completed", "en:characteristics-to-be-completed", "en:categories-to-be-completed", "en:brands-completed", "en:packaging-to-be-completed", "en:quantity-completed", "en:product-name-completed", "en:photos-validated", "en:photos-uploaded"],
+    "data_sources": "App - yuka, Apps",
+    "additives_debug_tags": ["en-e331-added", "en-e420-added", "en-e440i-added", "en-e500-added", "en-e503-added"],
+    "pnns_groups_2": "unknown",
+    "lang": "de",
+    "images": {
+        "5": {
+            "sizes": {
+                "400": {
+                    "h": 134,
+                    "w": 400
+                },
+                "100": {
+                    "w": 100,
+                    "h": 33
+                },
+                "full": {
+                    "h": 1339,
+                    "w": 4008
+                }
+            },
+            "uploaded_t": 1537385881,
+            "uploader": "fiat-lux"
+        },
+        "8": {
+            "uploader": "foodrepo",
+            "uploaded_t": 1554160369,
+            "sizes": {
+                "full": {
+                    "h": 1000,
+                    "w": 563
+                },
+                "100": {
+                    "h": 100,
+                    "w": 56
+                },
+                "400": {
+                    "w": 225,
+                    "h": 400
+                }
+            }
+        },
+        "10": {
+            "sizes": {
+                "100": {
+                    "h": 100,
+                    "w": 56
+                },
+                "400": {
+                    "h": 400,
+                    "w": 225
+                },
+                "full": {
+                    "w": 563,
+                    "h": 1000
+                }
+            },
+            "uploaded_t": 1554160370,
+            "uploader": "foodrepo"
+        },
+        "9": {
+            "uploader": "foodrepo",
+            "uploaded_t": 1554160369,
+            "sizes": {
+                "full": {
+                    "w": 563,
+                    "h": 1000
+                },
+                "100": {
+                    "w": 56,
+                    "h": 100
+                },
+                "400": {
+                    "h": 400,
+                    "w": 225
+                }
+            }
+        },
+        "2": {
+            "uploader": "kiliweb",
+            "sizes": {
+                "full": {
+                    "w": 3302,
+                    "h": 2476
+                },
+                "400": {
+                    "w": 400,
+                    "h": 300
+                },
+                "100": {
+                    "h": 75,
+                    "w": 100
+                }
+            },
+            "uploaded_t": "1515339973"
+        },
+        "3": {
+            "sizes": {
+                "full": {
+                    "h": 791,
+                    "w": 2917
+                },
+                "100": {
+                    "h": 27,
+                    "w": 100
+                },
+                "400": {
+                    "w": 400,
+                    "h": 108
+                }
+            },
+            "uploaded_t": 1537385432,
+            "uploader": "fiat-lux"
+        },
+        "6": {
+            "uploader": "foodrepo",
+            "uploaded_t": 1554160369,
+            "sizes": {
+                "400": {
+                    "w": 225,
+                    "h": 400
+                },
+                "100": {
+                    "h": 100,
+                    "w": 56
+                },
+                "full": {
+                    "h": 1000,
+                    "w": 563
+                }
+            }
+        },
+        "1": {
+            "uploader": "date-limite-app",
+            "sizes": {
+                "full": {
+                    "w": 1333,
+                    "h": 1000
+                },
+                "400": {
+                    "h": 300,
+                    "w": 400
+                },
+                "100": {
+                    "w": 100,
+                    "h": 75
+                }
+            },
+            "uploaded_t": "1474133709"
+        },
+        "7": {
+            "sizes": {
+                "400": {
+                    "w": 225,
+                    "h": 400
+                },
+                "100": {
+                    "w": 56,
+                    "h": 100
+                },
+                "full": {
+                    "w": 563,
+                    "h": 1000
+                }
+            },
+            "uploaded_t": 1554160369,
+            "uploader": "foodrepo"
+        },
+        "front_de": {
+            "geometry": "0x0-0-0",
+            "y2": null,
+            "normalize": null,
+            "x1": null,
+            "sizes": {
+                "full": {
+                    "w": 3573,
+                    "h": 2226
+                },
+                "400": {
+                    "h": 249,
+                    "w": 400
+                },
+                "100": {
+                    "h": 62,
+                    "w": 100
+                },
+                "200": {
+                    "w": 200,
+                    "h": 125
+                }
+            },
+            "imgid": "4",
+            "rev": "16",
+            "white_magic": null,
+            "y1": null,
+            "angle": null,
+            "x2": null
+        },
+        "4": {
+            "uploaded_t": 1537385823,
+            "sizes": {
+                "full": {
+                    "w": 3573,
+                    "h": 2226
+                },
+                "400": {
+                    "h": 249,
+                    "w": 400
+                },
+                "100": {
+                    "h": 62,
+                    "w": 100
+                }
+            },
+            "uploader": "fiat-lux"
+        },
+        "nutrition_de": {
+            "y1": null,
+            "angle": null,
+            "x2": null,
+            "rev": "19",
+            "white_magic": null,
+            "x1": null,
+            "normalize": null,
+            "orientation": "0",
+            "imgid": "5",
+            "sizes": {
+                "full": {
+                    "w": 4008,
+                    "h": 1339
+                },
+                "400": {
+                    "h": 134,
+                    "w": 400
+                },
+                "100": {
+                    "w": 100,
+                    "h": 33
+                },
+                "200": {
+                    "w": 200,
+                    "h": 67
+                }
+            },
+            "y2": null,
+            "geometry": "0x0-0-0",
+            "ocr": 1
+        },
+        "ingredients_de": {
+            "sizes": {
+                "full": {
+                    "h": 791,
+                    "w": 2917
+                },
+                "200": {
+                    "h": 54,
+                    "w": 200
+                },
+                "100": {
+                    "w": 100,
+                    "h": 27
+                },
+                "400": {
+                    "h": 108,
+                    "w": 400
+                }
+            },
+            "imgid": "3",
+            "orientation": "0",
+            "normalize": null,
+            "x1": null,
+            "ocr": 1,
+            "geometry": "0x0-0-0",
+            "y2": null,
+            "x2": null,
+            "angle": null,
+            "y1": null,
+            "white_magic": null,
+            "rev": "12"
+        },
+        "ingredients_fr": {
+            "geometry": "0x0-0-0",
+            "y2": null,
+            "ocr": 1,
+            "normalize": "0",
+            "x1": null,
+            "imgid": "2",
+            "orientation": "0",
+            "sizes": {
+                "400": {
+                    "h": 300,
+                    "w": 400
+                },
+                "200": {
+                    "h": 150,
+                    "w": 200
+                },
+                "100": {
+                    "w": 100,
+                    "h": 75
+                },
+                "full": {
+                    "h": 2476,
+                    "w": 3302
+                }
+            },
+            "rev": "9",
+            "white_magic": "0",
+            "y1": null,
+            "x2": null,
+            "angle": null
+        },
+        "front_fr": {
+            "white_magic": null,
+            "rev": "3",
+            "y1": -1,
+            "x2": -1,
+            "angle": 0,
+            "y2": -1,
+            "geometry": "0x0--3--3",
+            "x1": -1,
+            "normalize": null,
+            "sizes": {
+                "full": {
+                    "h": 1000,
+                    "w": 1333
+                },
+                "400": {
+                    "w": 400,
+                    "h": 300
+                },
+                "100": {
+                    "h": 75,
+                    "w": 100
+                },
+                "200": {
+                    "h": 150,
+                    "w": 200
+                }
+            },
+            "imgid": "1"
+        }
+    },
+    "serving_size_debug_tags": [],
+    "nucleotides_prev_tags": [],
+    "ingredients_text_fr": "cake",
+    "nova_group_debug": " -- ingredients/en:salt : 3 -- additives/en:e471 : 4",
+    "sortkey": 559981201,
+    "manufacturing_places_debug_tags": [],
+    "ingredients_tags": ["en:sugar", "en:glucose-fructose-syrup", "en:glucose", "en:fructose", "de:orangensaft-aus-orangensaftkonzentrat", "en:wheat-flour", "en:cereal", "en:wheat", "en:flour", "en:cereal-flour", "en:cocoa-paste", "en:cocoa", "de:flüssiges-vollei", "en:palm-fat", "en:oil", "en:vegetable-oil-and-fat", "en:palm-oil-and-fat", "en:cocoa-butter", "en:stabiliser", "en:e420ii", "en:e420", "en:wheat-starch", "en:starch", "en:gelling-agent", "en:e440a", "en:acid", "en:e330", "en:emulsifier", "de:tapiokastärke", "en:propellent-gas", "de:orangenschalenöl", "en:acidity-regulator", "en:e331i", "en:e331", "en:salt", "en:natural-vanilla-flavouring", "en:flavouring", "en:natural-flavouring", "en:vanilla-flavouring", "en:e471", "en:e322", "en:e503ii", "en:e503", "en:e500ii", "en:e500"],
+    "product_name_de_debug_tags": [],
+    "countries_lc": "de",
+    "labels_lc": "en",
+    "unknown_ingredients_n": 4,
+    "vitamins_tags": [],
+    "ingredients_text_with_allergens_fr": "cake",
+    "ingredients_ids_debug": ["zucker", "glukose-fruktose-sirup", "orangensaft-aus-orangensaftkonzentrat", "11", "weizenmehl", "kakaomasse", "flussiges-vollei", "6", "palmfett", "kakaobutter", "stabilisator", "sorbitsirup", "weizenstarke", "geliermittel", "pektin", "sauerungsmittel", "citronensaure", "emulgatoren", "e471", "lecithine", "soja", "tapiokastarke", "backtriebmittel", "ammoniumhydrogencarbonat", "natriumhydrogencarbonat", "orangenschalenol", "saureregulator", "mononatriumcitrat", "speisesalz", "naturliches-vanillearoma"],
+    "interface_version_modified": "20150316.jqm2",
+    "ingredients_text_with_allergens_de": "Zucker, Glukose-Fruktose-Sirup, Orangensaft aus Orangensaftkonzentrat (11%), <span class=\"allergen\">Weizenmehl</span>, Kakaomasse, flüssiges <span class=\"allergen\">Vollei</span> (6%), Palmfett, Kakaobutter, Stabilisator (Sorbitsirup), <span class=\"allergen\">Weizenstärke</span>, Geliermittel (Pektin), Säuerungsmittel (Citronensäure), Emulgatoren (E471, Lecithine (<span class=\"allergen\">Soja</span>), Tapiokastärke, Backtriebmittel (Ammoniumhydrogencarbonat, Natriumhydrogencarbonat), Orangenschalenöl, Säureregulator (Mononatriumcitrat), Speisesalz, natürliches Vanillearoma",
+    "max_imgid": "10",
+    "categories_hierarchy": [],
+    "rev": 66,
+    "countries_tags": ["en:france", "en:germany"],
+    "photographers_tags": ["date-limite-app", "kiliweb", "fiat-lux", "foodrepo"],
+    "amino_acids_prev_tags": [],
+    "checkers_tags": [],
+    "nutrition_grades_tags": ["not-applicable"],
+    "ingredients_text_de": "Zucker, Glukose-Fruktose-Sirup, Orangensaft aus Orangensaftkonzentrat (11%), _Weizenmehl_, Kakaomasse, flüssiges _Vollei_ (6%), Palmfett, Kakaobutter, Stabilisator (Sorbitsirup), _Weizenstärke_, Geliermittel (Pektin), Säuerungsmittel (Citronensäure), Emulgatoren (E471, Lecithine (_Soja_), Tapiokastärke, Backtriebmittel (Ammoniumhydrogencarbonat, Natriumhydrogencarbonat), Orangenschalenöl, Säureregulator (Mononatriumcitrat), Speisesalz, natürliches Vanillearoma",
+    "ingredients_n": 27,
+    "traces_tags": ["en:nuts", "de:cashewnuss", "de:mandeln-milch"],
+    "informers_tags": ["date-limite-app", "yuka.Zm9vRUlxUVB2UFluaHNFUThDeU8vZkJzbkx5d2VHNkhDOVFoSVE9PQ", "kiliweb", "fiat-lux"],
+    "last_modified_t": 1559981201,
+    "serving_size": "12g",
+    "labels_tags": ["en:fsc", "en:green-dot", "en:made-in-germany"],
+    "traces_from_ingredients": "",
+    "misc_tags": ["en:nutriscore-not-computed"],
+    "ingredients_analysis_tags": ["en:palm-oil", "en:vegan-status-unknown", "en:vegetarian-status-unknown"],
+    "cities_tags": [],
+    "stores": "",
+    "ingredients_text_de_debug_tags": [],
+    "created_t": 1474133709,
+    "manufacturing_places": ""
+} {
+    "_id": "52118887",
+    "labels_prev_tags": ["en:sustainable-farming", "en:utz-certified", "fr:certifie-utz"],
+    "labels_lc": "fr",
+    "allergens": "",
+    "traces_from_ingredients": "",
+    "_keywords": ["utz", "sondey", "cake", "soft", "orange", "agriculture", "durable", "certifie", "certified"],
+    "generic_name_fr_debug_tags": [],
+    "categories_tags": [],
+    "categories": "",
+    "manufacturing_places": "",
+    "labels_hierarchy": ["en:sustainable-farming", "en:utz-certified", "en:utz-certified-cacao"],
+    "traces": "",
+    "countries_hierarchy": ["en:france"],
+    "allergens_hierarchy": [],
+    "origins": "",
+    "languages_hierarchy": ["en:french"],
+    "labels": "Agriculture durable, UTZ Certified, Certifié UTZ \n",
+    "ingredients_from_palm_oil_tags": [],
+    "last_modified_by": "teolemon",
+    "cities_tags": [],
+    "misc_tags": ["en:nutriscore-not-computed"],
+    "minerals_tags": [],
+    "ingredients_tags": [],
+    "photographers_tags": ["openfoodfacts-contributors"],
+    "creator": "openfoodfacts-contributors",
+    "stores_tags": ["lidl"],
+    "ingredients_text_fr_debug_tags": [],
+    "states_hierarchy": ["en:to-be-completed", "en:nutrition-facts-to-be-completed", "en:ingredients-to-be-completed", "en:expiration-date-to-be-completed", "en:packaging-code-to-be-completed", "en:characteristics-to-be-completed", "en:categories-to-be-completed", "en:brands-completed", "en:packaging-to-be-completed", "en:quantity-to-be-completed", "en:product-name-completed", "en:photos-to-be-validated", "en:photos-uploaded"],
+    "brands": "Sondey",
+    "checkers_tags": [],
+    "states": "en:to-be-completed, en:nutrition-facts-to-be-completed, en:ingredients-to-be-completed, en:expiration-date-to-be-completed, en:packaging-code-to-be-completed, en:characteristics-to-be-completed, en:categories-to-be-completed, en:brands-completed, en:packaging-to-be-completed, en:quantity-to-be-completed, en:product-name-completed, en:photos-to-be-validated, en:photos-uploaded",
+    "product_name": "Soft Cake Orange",
+    "purchase_places_tags": [],
+    "traces_debug_tags": [],
+    "states_tags": ["en:to-be-completed", "en:nutrition-facts-to-be-completed", "en:ingredients-to-be-completed", "en:expiration-date-to-be-completed", "en:packaging-code-to-be-completed", "en:characteristics-to-be-completed", "en:categories-to-be-completed", "en:brands-completed", "en:packaging-to-be-completed", "en:quantity-to-be-completed", "en:product-name-completed", "en:photos-to-be-validated", "en:photos-uploaded"],
+    "ingredients_text_with_allergens": "",
+    "interface_version_created": "20120622",
+    "nutrition_score_beverage": 0,
+    "nutrition_score_debug": "no score when the product does not have a category",
+    "ingredients_text_debug": "",
+    "vitamins_prev_tags": [],
+    "emb_codes_orig": "",
+    "purchase_places": "",
+    "manufacturing_places_debug_tags": [],
+    "quantity": "",
+    "emb_codes_tags": [],
+    "origins_debug_tags": [],
+    "traces_tags": [],
+    "traces_hierarchy": [],
+    "languages_tags": ["en:french", "en:1"],
+    "generic_name_fr": "",
+    "last_edit_dates_tags": ["2019-02-15", "2019-02", "2019"],
+    "languages": {
+        "en:french": 2
+    },
+    "vitamins_tags": [],
+    "nutrition_data_prepared_per": "100g",
+    "amino_acids_tags": [],
+    "additives_tags": [],
+    "expiration_date_debug_tags": [],
+    "brands_debug_tags": [],
+    "nutrition_data_per_debug_tags": [],
+    "emb_codes_debug_tags": [],
+    "countries_lc": "fr",
+    "lang": "fr",
+    "brands_tags": ["sondey"],
+    "manufacturing_places_tags": [],
+    "other_nutritional_substances_tags": [],
+    "labels_debug_tags": ["added-en-utz-certified-cacao", "removed-fr-certifie-utz"],
+    "sortkey": 550258244,
+    "generic_name": "",
+    "id": "52118887",
+    "ingredients_hierarchy": [],
+    "informers_tags": ["openfoodfacts-contributors", "keragui", "teolemon"],
+    "allergens_tags": [],
+    "last_image_dates_tags": ["2017-12-18", "2017-12", "2017"],
+    "countries_debug_tags": [],
+    "ingredients_debug": [],
+    "last_editor": "teolemon",
+    "serving_size_debug_tags": [],
+    "pnns_groups_1": "unknown",
+    "entry_dates_tags": ["2017-12-18", "2017-12", "2017"],
+    "nutrition_grades_tags": ["not-applicable"],
+    "packaging_tags": [],
+    "link": "",
+    "ingredients_original_tags": [],
+    "quantity_debug_tags": [],
+    "countries_tags": ["en:france"],
+    "last_modified_t": 1550258244,
+    "amino_acids_prev_tags": [],
+    "ingredients_text_fr": "",
+    "categories_hierarchy": [],
+    "additives_old_tags": [],
+    "pnns_groups_1_tags": ["unknown", "missing-category"],
+    "nutrient_levels": {},
+    "created_t": 1513607818,
+    "stores": "Lidl",
+    "nucleotides_prev_tags": [],
+    "packaging_debug_tags": [],
+    "completeness": 0.2666666666666667,
+    "interface_version_modified": "20150316.jqm2",
+    "ingredients_ids_debug": [],
+    "product_name_fr_debug_tags": [],
+    "unknown_ingredients_n": 0,
+    "rev": 6,
+    "codes_tags": ["code-8", "52118xxx", "5211xxxx", "521xxxxx", "52xxxxxx", "5xxxxxxx"],
+    "labels_tags": ["en:sustainable-farming", "en:utz-certified", "en:utz-certified-cacao"],
+    "expiration_date": "",
+    "minerals_prev_tags": [],
+    "correctors_tags": ["keragui"],
+    "nutrition_data_per": "100g",
+    "complete": 0,
+    "countries": "France",
+    "ingredients_text_with_allergens_fr": "",
+    "ingredients_text": "",
+    "packaging": "",
+    "quality_tags": [],
+    "nova_group_debug": "no nova group when the product does not have ingredients",
+    "ingredients_that_may_be_from_palm_oil_tags": [],
+    "nucleotides_tags": [],
+    "no_nutrition_data": "",
+    "code": "52118887",
+    "labels_prev_hierarchy": ["en:sustainable-farming", "en:utz-certified", "fr:Certifié UTZ\n"],
+    "pnns_groups_2": "unknown",
+    "images": {
+        "1": {
+            "uploader": "openfoodfacts-contributors",
+            "sizes": {
+                "400": {
+                    "h": 400,
+                    "w": 225
+                },
+                "full": {
+                    "h": 2000,
+                    "w": 1125
+                },
+                "100": {
+                    "h": 100,
+                    "w": 56
+                }
+            },
+            "uploaded_t": "1513607818"
+        },
+        "front_fr": {
+            "imgid": "1",
+            "rev": "4",
+            "normalize": "true",
+            "white_magic": "false",
+            "y2": "257.33331298828125",
+            "x1": "5",
+            "geometry": "1220x770-25-516",
+            "x2": "249",
+            "angle": "0",
+            "y1": "103.33331298828125",
+            "sizes": {
+                "full": {
+                    "w": 1100,
+                    "h": 770
+                },
+                "100": {
+                    "w": 100,
+                    "h": 70
+                },
+                "400": {
+                    "h": 280,
+                    "w": 400
+                },
+                "200": {
+                    "w": 200,
+                    "h": 140
+                }
+            }
+        }
+    },
+    "languages_codes": {
+        "fr": 2
+    },
+    "update_key": "ing3",
+    "editors_tags": ["teolemon", "keragui", "openfoodfacts-contributors"],
+    "lang_debug_tags": [],
+    "link_debug_tags": [],
+    "nutriments": {},
+    "product_name_fr": "Soft Cake Orange",
+    "nova_group_tags": ["not-applicable"],
+    "lc": "fr",
+    "additives_original_tags": [],
+    "debug_param_sorted_langs": ["fr"],
+    "max_imgid": "1",
+    "last_image_t": 1513607819,
+    "origins_tags": [],
+    "purchase_places_debug_tags": [],
+    "nutrient_levels_tags": [],
+    "unknown_nutrients_tags": [],
+    "allergens_from_ingredients": "",
+    "categories_lc": "fr",
+    "pnns_groups_2_tags": ["unknown", "missing-category"],
+    "additives_debug_tags": [],
+    "emb_codes": "",
+    "ingredients": [],
+    "additives_prev_original_tags": []
+}
