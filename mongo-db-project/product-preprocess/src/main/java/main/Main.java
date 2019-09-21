@@ -9,6 +9,7 @@ import org.bson.Document;
 
 import image.ImageHelper;
 import mongo.MongoDB;
+import ocr.TesseractHelper;
 
 
 public class Main {
@@ -31,11 +32,16 @@ public class Main {
 				System.out.println(imagePath);
 				
 				File file = new File("images/" + product.getString("code") + ".jpg");
-				if (!file.exists()) {
+
+				
+				if (!file.exists() || true) { // TODO
 					Image image = ImageHelper.dowloadImage(imagePath);
 					if (image != null) {
 						ImageHelper.saveImage(file, image);
 					}
+					
+					String ocr = TesseractHelper.doOCR(file);
+					System.out.println(ocr);
 				}
 			}
 		}
