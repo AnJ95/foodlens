@@ -31,6 +31,9 @@
 
         <activity android:name="com.google.android.gms.samples.vision.ocrreader.OcrCaptureActivity"
             android:label="Read Text" />
+
+        <activity android:name="com.google.android.gms.samples.vision.ocrreader.OcrIndexingActivity"
+            android:label="Indexing" />
     </application>
 
 </manifest>

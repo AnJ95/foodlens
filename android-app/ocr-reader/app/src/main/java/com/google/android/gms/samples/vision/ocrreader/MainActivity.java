@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView statusMessage;
     private TextView textValue;
 
+    private static final int RC_OCR_INDEX = 9006;
     private static final int RC_OCR_CAPTURE = 9003;
     private static final String TAG = "MainActivity";
 
@@ -64,11 +65,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.read_text) {
             // launch Ocr capture activity.
-            Intent intent = new Intent(this, OcrCaptureActivity.class);
-            intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
-            intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
+            //Intent intent = new Intent(this, OcrCaptureActivity.class);
+            //intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
+            //intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
+            Intent intent = new Intent(this, OcrIndexingActivity.class);
 
-            startActivityForResult(intent, RC_OCR_CAPTURE);
+            startActivityForResult(intent, RC_OCR_INDEX);
         }
     }
 

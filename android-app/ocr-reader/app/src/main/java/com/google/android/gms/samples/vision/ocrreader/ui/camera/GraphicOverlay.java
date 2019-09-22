@@ -45,6 +45,8 @@ import java.util.Set;
  */
 public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
     private final Object mLock = new Object();
+    protected int mPreviewLeft;
+    protected int mPreviewTop;
     private int mPreviewWidth;
     private float mWidthScaleFactor = 1.0f;
     private int mPreviewHeight;
@@ -99,23 +101,23 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
         }
 
         /**
-         * Adjusts the x coordinate from the preview's coordinate system to the view coordinate
+         * Adjusts the mPreviewLeft coordinate from the preview's coordinate system to the view coordinate
          * system.
          */
         public float translateX(float x) {
             if (mOverlay.mFacing == CameraSource.CAMERA_FACING_FRONT) {
-                return mOverlay.getWidth() - scaleX(x);
+                return mOverlay.getWidth() - scaleX(x) + mOverlay.mPreviewLeft;
             } else {
-                return scaleX(x);
+                return scaleX(x) + mOverlay.mPreviewLeft;
             }
         }
 
         /**
-         * Adjusts the y coordinate from the preview's coordinate system to the view coordinate
+         * Adjusts the mPreviewTop coordinate from the preview's coordinate system to the view coordinate
          * system.
          */
         public float translateY(float y) {
-            return scaleY(y);
+            return scaleY(y) + mOverlay.mPreviewTop;
         }
 
         public void postInvalidate() {
@@ -188,6 +190,12 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
         }
         postInvalidate();
     }
+    public void setCameraInfo(int previewWidth, int previewHeight, int previewLeft, int previewTop, int facing) {
+        this.mPreviewLeft = previewLeft;
+        this.mPreviewTop = previewTop;
+        setCameraInfo(previewWidth, previewHeight, facing);
+    }
+
 
     /**
      * Draws the overlay with its associated graphic objects.
