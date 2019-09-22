@@ -16,13 +16,20 @@
 package com.google.android.gms.samples.vision.ocrreader;
 
 
+import android.graphics.Rect;
 import android.util.Log;
-import android.widget.ImageView;
+import android.util.SparseArray;
 
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
+import com.google.android.gms.samples.vision.ocrreader.wordindex.WordIndex;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.Element;
+import com.google.android.gms.vision.text.Line;
+import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay
@@ -30,23 +37,77 @@ import com.google.android.gms.vision.text.TextBlock;
  */
 public class OcrIndexingProcessor extends OcrDetectorProcessor {
 
+    private WordIndex wordIndex = new WordIndex();
+    private GraphicOverlay<OcrGraphic> mGraphicOverlay;
 
     OcrIndexingProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
         super(ocrGraphicOverlay);
     }
 
 
-
     @Override
     public void receiveDetections(Detector.Detections<TextBlock> detections) {
-        Log.d("Detection", "receiveDetections");
-        Log.d("Detection", detections.toString());
         super.receiveDetections(detections);
-    }
+        SparseArray<TextBlock> textBlocks = detections.getDetectedItems();
+
+        Rect minRect = new Rect(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        Rect maxRect = new Rect(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
+
+        List<Element> allElements = new LinkedList<>();
 
 
-    @Override
-    public void release() {
-        super.release();
+        // iterate Elements in Lines in TextBlocks
+        // keep track of minimum bounding rect to normalize
+        for (int t = 0; t < textBlocks.size(); ++t) {
+            // add TextBlock visually
+            TextBlock textBlock = textBlocks.valueAt(t);
+            for (Text line : textBlock.getComponents()) {
+                for (Element elem : (Iterable<Element>) line.getComponents()) {
+                    Rect rect = elem.getBoundingBox();
+
+                    allElements.add(elem);
+
+                    minRect = minRect(minRect, rect);
+                    maxRect = maxRect(maxRect, rect);
+                }
+            }
+        }
+
+        // iterate all elements again to normalize and add to WordIndex
+        for (Element elem : allElements) {
+            Rect rect = elem.getBoundingBox();
+            Rectangle normalizedRect = new Rectangle<Float>(
+                    normalize(minRect.left, maxRect.left, rect.left),
+                    normalize(minRect.top, maxRect.top, rect.top),
+                    normalize(minRect.right, maxRect.right, rect.right),
+                    normalize(minRect.bottom, maxRect.bottom, rect.bottom)
+            );
+            wordIndex.addWordOccurence(elem.getValue(), 1, normalizedRect); // TODO get product code
+            Log.d("Detection", normalizedRect + ": " + elem.getValue());
+        }
+
+        Log.d("Detection", wordIndex.toString());
     }
+
+    private float normalize(float min, float max, float value) {
+        return (value - min) / (max - min);
+    }
+
+    // Note: Rectangle a is changed
+    private Rect minRect(Rect a, Rect b) {
+        a.top = Math.min(a.top, b.top);
+        a.right = Math.min(a.right, b.right);
+        a.bottom = Math.min(a.bottom, b.bottom);
+        a.left = Math.min(a.left, b.left);
+        return a;
+    }
+    // Note: Rectangle a is changed
+    private Rect maxRect(Rect a, Rect b) {
+        a.top = Math.max(a.top, b.top);
+        a.right = Math.max(a.right, b.right);
+        a.bottom = Math.max(a.bottom, b.bottom);
+        a.left = Math.max(a.left, b.left);
+        return a;
+    }
+
 }
