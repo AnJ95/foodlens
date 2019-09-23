@@ -15,52 +15,30 @@
  */
 package com.google.android.gms.samples.vision.ocrreader;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.Camera;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.common.images.Size;
-import com.google.android.gms.samples.vision.ocrreader.ui.camera.CameraSourcePreview;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -79,6 +57,7 @@ public final class OcrIndexingActivity extends AppCompatActivity  {
     private OcrIndexingProcessor processor;
 
     TextRecognizer textRecognizer;
+    private ProgressBar mProgressBar;
 
 
     /**
@@ -90,52 +69,118 @@ public final class OcrIndexingActivity extends AppCompatActivity  {
         setContentView(R.layout.ocr_index);
 
 
+
         mPreview = (ImageView) findViewById(R.id.imageView);
         mGraphicOverlay = (GraphicOverlay<OcrGraphic>) findViewById(R.id.graphicOverlay);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         processor = new OcrIndexingProcessor(mGraphicOverlay);
         textRecognizer = createTextRecognizer();
 
-        iterateFiles(getAssets(), "productImages");
 
-        /*Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom",
-                Snackbar.LENGTH_LONG)
-                .show();*/
-        //index(R.drawable.front_010430652874676217); // landscape
-        //index(R.drawable.front_2000000032318); // portrait
+        //iterateFiles(getAssets(), "productImages");
+        new Worker(getAssets(), "productImages").start();
+
+
     }
 
 
+    class Worker extends Thread {
 
-    private void iterateFiles(AssetManager mgr, String path) {
-        try {
-            String list[] = mgr.list(path);
-            if (list != null) {
+        private int currentProgress = -1;
+        private Drawable image;
+        private String productCode;
+        private boolean currentWasDetected = true;
 
-                for (String file : list) {
+        private final String path;
+        private final String[] fileList;
 
-                    Drawable image = Drawable.createFromStream(getAssets().open(path + "/" + file), null);
-
-                    if (image != null) {
-                        // front_03481514.jpg => 03481514
-                        String productCode = file.replaceAll("[^0-9]", "");
-                        index(image, productCode);
-
-                    }
-                }
+        Worker(AssetManager mgr, String path) {
+            String[] fileList;
+            try {
+                fileList = mgr.list(path);
+                mProgressBar.setMax(fileList.length);
+            } catch (IOException e) {
+                Log.v("List error:", "can't list" + path);
+                fileList = null;
+                mProgressBar.setMax(0);
             }
-        } catch (IOException e) {
-            Log.v("List error:", "can't list" + path);
+            this.fileList = fileList;
+            this.path = path;
+
         }
 
+        public void run() {
+            while (true) {
+
+                // check if to start next iteration/file
+                if (currentWasDetected) {
+                    if (!next()) {
+                        break;
+                    }
+                }
+
+
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                // check if processor is done detecting
+                if (processor.hasReceivedSinceCurrentProductCodeChanged()) {
+                    currentWasDetected = true;
+                }
+            }
+
+            // TODO Done
+        }
+
+        private boolean next() {
+            // update iteration state
+            currentWasDetected = false;
+            currentProgress++;
+            if (currentProgress >= fileList.length) {
+                return false;
+            }
+            mProgressBar.setProgress(currentProgress);
+
+
+
+            // update drawable
+            String fileName = fileList[currentProgress];
+            image = null;
+            try {
+                image = Drawable.createFromStream(getAssets().open(path + "/" + fileName), null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // update product code
+            productCode = fileName.replaceAll("[^0-9]", "");
+
+
+            Snackbar.make(mGraphicOverlay, currentProgress + "/" + fileList.length + " " + productCode,
+                    Snackbar.LENGTH_LONG)
+                    .show();
+
+            processor.setCurrentProductCode(productCode);
+            index(image);
+
+            return true;
+        }
     }
 
-    private void index(Drawable image, String productCode) {
-        // update view
-        mPreview.setImageDrawable(image);
-        setGraphicOverlaySize(image);
 
-        // set current product code; used during text recognition
-        processor.setCurrentProductCode(productCode); // TODO is receiveFrame even sync?
+
+    private void index(final Drawable image) {
+        // update view (must be in main thread)
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mPreview.setImageDrawable(image);
+                setGraphicOverlaySize(image);
+            }
+        });
 
         // detect text
         Frame frame = new Frame.Builder().setBitmap(drawableToBitmap(image)).build();
@@ -195,7 +240,7 @@ public final class OcrIndexingActivity extends AppCompatActivity  {
         // is set to receive the text recognition results and display graphics for each text block
         // on screen.
         TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build();
-        textRecognizer.setProcessor(new OcrIndexingProcessor(mGraphicOverlay));
+        textRecognizer.setProcessor(processor);
 
         if (!textRecognizer.isOperational()) {
             // Note: The first time that an app using a Vision API is installed on a

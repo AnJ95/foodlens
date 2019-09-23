@@ -24,7 +24,6 @@ import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.samples.vision.ocrreader.wordindex.WordIndex;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.Element;
-import com.google.android.gms.vision.text.Line;
 import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
 
@@ -37,8 +36,11 @@ import java.util.List;
  */
 public class OcrIndexingProcessor extends OcrDetectorProcessor {
 
+    public String currentProductCode;
+    private boolean hasReceived = false;
+
     private WordIndex wordIndex = new WordIndex();
-    private String currentProductCode;
+
 
     OcrIndexingProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
         super(ocrGraphicOverlay);
@@ -86,7 +88,9 @@ public class OcrIndexingProcessor extends OcrDetectorProcessor {
             //Log.d("Detection", normalizedRect + ": " + elem.getValue());
         }
 
-        Log.d("Detection", currentProductCode + ": " + wordIndex.toString());
+        Log.d("Detection", "detected " + allElements.size() + " words in " + currentProductCode + " => " + wordIndex.toString());
+
+        hasReceived = true;
     }
 
     private float normalize(float min, float max, float value) {
@@ -110,7 +114,14 @@ public class OcrIndexingProcessor extends OcrDetectorProcessor {
         return a;
     }
 
-    public void setCurrentProductCode(String productCode) {
-        this.currentProductCode = productCode;
+    public void setCurrentProductCode(String currentProductCode) {
+        this.hasReceived = false;
+        this.currentProductCode = currentProductCode;
+    }
+
+    // best method name award incoming
+    public boolean hasReceivedSinceCurrentProductCodeChanged() {
+        return this.hasReceived;
+
     }
 }
