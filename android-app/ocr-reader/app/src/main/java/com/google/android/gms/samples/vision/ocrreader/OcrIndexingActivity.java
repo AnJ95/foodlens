@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,6 +33,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -58,6 +60,7 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -65,7 +68,7 @@ import java.io.IOException;
  * rear facing camera. During detection overlay graphics are drawn to indicate the position,
  * size, and contents of each TextBlock.
  */
-public final class OcrIndexingActivity extends AppCompatActivity {
+public final class OcrIndexingActivity extends AppCompatActivity  {
     private static final String TAG = "OcrIndexingActivity";
 
     // Intent request code to handle updating play services if needed.
@@ -74,6 +77,8 @@ public final class OcrIndexingActivity extends AppCompatActivity {
     private ImageView mPreview;
     private GraphicOverlay<OcrGraphic> mGraphicOverlay;
     private OcrIndexingProcessor processor;
+
+    TextRecognizer textRecognizer;
 
 
     /**
@@ -88,28 +93,52 @@ public final class OcrIndexingActivity extends AppCompatActivity {
         mPreview = (ImageView) findViewById(R.id.imageView);
         mGraphicOverlay = (GraphicOverlay<OcrGraphic>) findViewById(R.id.graphicOverlay);
         processor = new OcrIndexingProcessor(mGraphicOverlay);
+        textRecognizer = createTextRecognizer();
 
+        iterateFiles(getAssets(), "productImages");
 
         /*Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom",
                 Snackbar.LENGTH_LONG)
                 .show();*/
-        detectResource(R.drawable.front_2000000032318); // portrait
-        //detectResource(R.drawable.front_010430652874676217); // landscape
+        //index(R.drawable.front_010430652874676217); // landscape
+        //index(R.drawable.front_2000000032318); // portrait
+    }
 
+
+
+    private void iterateFiles(AssetManager mgr, String path) {
+        try {
+            String list[] = mgr.list(path);
+            if (list != null) {
+
+                for (String file : list) {
+
+                    Drawable image = Drawable.createFromStream(getAssets().open(path + "/" + file), null);
+
+                    if (image != null) {
+                        // front_03481514.jpg => 03481514
+                        String productCode = file.replaceAll("[^0-9]", "");
+                        index(image, productCode);
+
+                    }
+                }
+            }
+        } catch (IOException e) {
+            Log.v("List error:", "can't list" + path);
+        }
 
     }
 
-    private void detectResource(int resId) {
-        mPreview.setImageResource(resId); //portrait
-        Drawable image = mPreview.getDrawable();
-
+    private void index(Drawable image, String productCode) {
+        // update view
+        mPreview.setImageDrawable(image);
         setGraphicOverlaySize(image);
 
-        TextRecognizer textRecognizer = createTextRecognizer();
+        // set current product code; used during text recognition
+        processor.setCurrentProductCode(productCode); // TODO is receiveFrame even sync?
 
+        // detect text
         Frame frame = new Frame.Builder().setBitmap(drawableToBitmap(image)).build();
-        Log.d("Detection", "start");
-
         textRecognizer.receiveFrame(frame);
         textRecognizer.detect(frame);
     }
@@ -126,21 +155,17 @@ public final class OcrIndexingActivity extends AppCompatActivity {
             double newWidth = imageHeight / (screenHeight / screenWidth);
             double v_to_s_factor = imageHeight / screenHeight;
             double newLeft = (screenWidth - imageWidth/v_to_s_factor) / 2.0;
-
             mGraphicOverlay.setCameraInfo((int)Math.round(newWidth), (int)Math.round(imageHeight), (int)Math.round(newLeft), 0, CameraSource.CAMERA_FACING_BACK);
-            Log.d("Detection", v_to_s_factor+ " " +imageHeight + " " +screenHeight  + " " +  newWidth + " " + (int)Math.round(newLeft));
 
         } else { // stripes above and below
             double newHeight = imageWidth / (screenWidth / screenHeight);
-
             double v_to_s_factor = imageWidth / screenWidth;
             double newTop = (screenHeight - imageHeight/v_to_s_factor) / 2.0;
-            // 450;
             mGraphicOverlay.setCameraInfo((int)Math.round(imageWidth), (int)Math.round(newHeight), 0, (int)Math.round(newTop), CameraSource.CAMERA_FACING_BACK);
-
-            Log.d("Detection", v_to_s_factor+ " " +imageHeight + " " +screenHeight  + " " +  newHeight + " " + (int)Math.round(newTop));
         }
     }
+
+
 
     // https://stackoverflow.com/questions/4743116/get-screen-width-and-height-in-android
     private int getNavigationBarHeight() {

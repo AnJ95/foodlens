@@ -14,7 +14,7 @@ class Word extends Hashtable {
 
     private String text;
 
-    public Word(String text) {
+    Word(String text) {
         this.text = text;
     }
 
@@ -23,7 +23,7 @@ class Word extends Hashtable {
         return text.hashCode();
     }
 
-    public void addOccurence(int productCode, Rectangle normalizedRect) {
+    void addOccurence(String productCode, Rectangle normalizedRect) {
         occurences.add(new WordOccurence(productCode, normalizedRect));
     }
 }

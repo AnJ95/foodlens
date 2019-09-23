@@ -38,7 +38,7 @@ import java.util.List;
 public class OcrIndexingProcessor extends OcrDetectorProcessor {
 
     private WordIndex wordIndex = new WordIndex();
-    private GraphicOverlay<OcrGraphic> mGraphicOverlay;
+    private String currentProductCode;
 
     OcrIndexingProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
         super(ocrGraphicOverlay);
@@ -82,11 +82,11 @@ public class OcrIndexingProcessor extends OcrDetectorProcessor {
                     normalize(minRect.right, maxRect.right, rect.right),
                     normalize(minRect.bottom, maxRect.bottom, rect.bottom)
             );
-            wordIndex.addWordOccurence(elem.getValue(), 1, normalizedRect); // TODO get product code
-            Log.d("Detection", normalizedRect + ": " + elem.getValue());
+            wordIndex.addWordOccurence(elem.getValue(), currentProductCode, normalizedRect);
+            //Log.d("Detection", normalizedRect + ": " + elem.getValue());
         }
 
-        Log.d("Detection", wordIndex.toString());
+        Log.d("Detection", currentProductCode + ": " + wordIndex.toString());
     }
 
     private float normalize(float min, float max, float value) {
@@ -110,4 +110,7 @@ public class OcrIndexingProcessor extends OcrDetectorProcessor {
         return a;
     }
 
+    public void setCurrentProductCode(String productCode) {
+        this.currentProductCode = productCode;
+    }
 }

@@ -12,7 +12,7 @@ public class WordIndex {
     private Map<String, Word> words = new HashMap<>();
 
 
-    public void addWordOccurence(String text, int productCode, Rectangle normalizedRect) {
+    public void addWordOccurence(String text, String productCode, Rectangle normalizedRect) {
         if (!words.containsKey(text)) {
             words.put(text, new Word(text));
         }
