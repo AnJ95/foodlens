@@ -9,9 +9,12 @@ Flunzmas @ Github - boltres @ GitLab
 
 **An welchen Open-Source-Projekten hast Du/habt Ihr bisher gearbeitet?** *Max. 3 Projektbeispiele angeben (mit Link)*
 
-https://github.com/rekit-group/rekit-game - 2D-Spieleengine für Bildungszwecke im Bereich Software Design an Universitäten
-https://github.com/schulzchristian/multilevelSVM - wisschenschafliches Forschungsprojekt zu Support Vector Machines
-https://globalgamejam.org/users/maschm - gemeinsam programmierte frei verfügbare Spiele im Rahmen den GGJ
+https://github.com/rekit-group/rekit-game - 2D-Spieleengine für Bildungszwecke im Bereich Software Design
+
+https://github.com/schulzchristian/multilevelSVM - wisschenschafliches Forschungsprojekt im Bereich Support Vector Machines
+
+https://globalgamejam.org/users/maschm - gemeinsam programmierte frei verfügbare Spiele im Rahmen des GGJ
+
 
 **Projekttitel** *Max. 70 Zeichen*
 
@@ -44,7 +47,7 @@ Die OpenFoodFacts App und proprietäre Anbieter wie codecheck oder barcoo verwen
 
 Heutzutage führt praktisch jeder Supermarktkunde sein Handy mit und käme damit als potentieller Nutzer unserer App infrage. Es ist jedoch sinnvoll, die Zielgruppe auf diejenigen Kunden zu beschränken, die ihre Kaufentscheidungen faktengestützt tätigen möchten und hierfür bereit sind das Handy zu nutzen. Diesen Kunden möchten wir mit unserer App eine intuitiv benutzbare und effektive Entscheidungshilfe geben. Die Bekanntheit unserer App werden wir schrittweise aufbauen, indem wir uns u.U. zunächst geografisch beschränken oder aber gewisse Nutzer-Communities gezielt ansprechen und Bekanntheit bei denen erlangen, die unsere Vision im Folgenden zur breiten Masse hinaus tragen werden.
 
-Hast Du schon an der Idee gearbeitet? Wenn ja, beschreibe kurz den aktuellen Stand und erkläre die Neuerung.** *Max. 700 Zeichen*
+**Hast Du schon an der Idee gearbeitet? Wenn ja, beschreibe kurz den aktuellen Stand und erkläre die Neuerung.** *Max. 700 Zeichen*
 
 Der Anmeldung ging eine Recherche über schon existierende Lösungen sowie mögliche Kollaborationen voraus. Hierbei haben wir mit codecheck Kontakt aufgenommen und ein "Angebot" bekommen, deren Datenbank zu mieten (1000 Anfragen pro Tag für 300€ im Monat). Danach wurden wir auf die unter der Open Database License verfügbaren Daten von OpenFoodFacts aufmerksam.
 Als Proof-of-Concept für unseren Ansatz der textbasierten Bilderkennung haben wir bereits einen Prototypen entwickelt. Es handelt sich um eine Android-App welche 100 Produkte per Bilderkennung erkennen und mit einer Framerate von X in einer simplen AR-Ansicht anzeigen kann. Hierfür haben wir bereits die OpenFoodFacts Datenbank verwendet.
