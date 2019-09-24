@@ -1,23 +1,23 @@
 # Engineering Trust – Vertrauen bauen.
 
 
-**GitHub/BitBucket Accounts**  
+**GitHub/BitBucket Accounts**
+matzebond @ Github - maschm @ GitLab
 
 **An welchen Open-Source-Projekten hast Du/habt Ihr bisher gearbeitet?** *Max. 3 Projektbeispiele angeben (mit Link)*  
 
 **Projekttitel** *Max. 70 Zeichen*  
+SUPER OPEN AR FAKTEN FOOD MARKT 
+
 
 **Beschreibe Dein Projekt kurz.** *Max. 700 Zeichen*  
-Im heutigen Supermarkt wählen wir aus einer Fülle von Produkten aus. Dabei können wir nicht für jedes Produkt eine faktenbasierte Entscheidung treffen. Stattdessen fundiert unser Vertrauen in das Produkt zu einem Großteil auf dessen Marketing. Für unser Projekt entwickeln wir eine App die dem Kunden Licht in den Produktdschungel bringt. Mittels Bilderkennung kann der Benutzer mehrere Produkte, deren Inhaltsstoffe und Nährwerte direkt im Supermarktregal vergleichen. Interessante Metriken wie der Nutri-Score sowie eine Filterung nach Allergien, Intoleranzen oder Fleischanteil werden dem Nutzer in einer Augmented Reality Experience über das Produkt gelegt.
 
-
+Im heutigen Supermarkt wählen wir aus einer Fülle von Produkten aus. Dabei können wir nicht für jedes Produkt eine faktenbasierte Kaufentscheidung treffen. Stattdessen fundiert unser Vertrauen in das Produkt zu einem Großteil auf dessen Marketing. Für unser Projekt entwickeln wir eine App die dem Kunden Licht in den Produktdschungel bringt. Mittels Bilderkennung kann der Benutzer mehrere Produkte, deren Inhaltsstoffe und Nährwerte direkt im Supermarktregal vergleichen. Interessante Metriken wie der Nutri-Score sowie eine Filterung nach Allergien, Intoleranzen oder Fleischanteil werden dem Nutzer in einer Augmented Reality Experience über das Produkt gelegt.
 
 
 **Welches gesellschaftliche Problem willst Du mit Deinem Projekt lösen?** *Max. 700 Zeichen*  
 
-Der Bericht des IPCCs hängt wie ein Schatten über den Köpfen der Menschen und das Bewusstsein für den Klimawandel ist auf einem nie dagewesenen Hoch. Der Deutsche geht 209 mal pro Jahr in den Supermarkt und steht dabei vor klima- gesundheits- sowie sozioökonomisch relevanten Entscheidungen. Die Marketingindustrie hat viele Wege gefunden dem Nutzer diese Entscheidung abzubehmen und auf unwesentliche Äußerlichkeiten zu reduzieren. Wir behaupten im Informationszeitalter zu leben jedoch hat selbst der investierte Nutzer nicht die nötigen Informationen oder nicht die nötige Zeit seinem Gewissen gerecht zu entscheiden. Unsere App gibt dem Nutzer die Informationen die er braucht und verdient.
-
-
+Der Bericht des IPCCs hängt wie ein Schatten über den Köpfen der Menschen und das Bewusstsein für den Klimawandel ist auf einem nie dagewesenen Hoch. Der Deutsche geht 209 mal pro Jahr in den Supermarkt und steht dabei vor klima-, gesundheits- sowie sozioökologisch relevanten Entscheidungen. Die Marketingindustrie hat viele Wege gefunden dem Nutzer diese Entscheidung abzubehmen und auf emotionale Buzzwords und Äußerlichkeiten zu reduzieren. Wir behaupten im Informationszeitalter zu leben jedoch hat selbst der investierte Nutzer weder die nötigen Informationen noch die nötige Zeit seinem Gewissen gerecht zu entscheiden. Unsere App gibt dem Nutzer die Informationen die er braucht und verdient.
 
 
 **Wie willst Du Dein Projekt technisch umsetzen?** *Max. 1300 Zeichen*  
