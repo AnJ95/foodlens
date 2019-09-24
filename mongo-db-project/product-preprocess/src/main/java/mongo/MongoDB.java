@@ -26,7 +26,9 @@ public class MongoDB {
 		System.out.println("Connected to database '" + db.getName() + "'");
 		
 		this.collection = db.getCollection(collectionName);
-		System.out.println("Selecting collection '" + collectionName + "' with " + collection.countDocuments() + " documents");	 
+		//countDocuments() is evil!
+		//System.out.println("Selecting collection '" + collectionName + "' with " + collection.countDocuments() + " documents"); 
+		System.out.println("Selecting collection '" + collectionName + "'");
 	}
 	
 	public FindIterable<Document> getProducts() {
