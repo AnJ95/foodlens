@@ -125,6 +125,9 @@ public class IndexProcessor extends BlockCaptureProcessor {
     // best method name award incoming
     public boolean hasReceivedSinceCurrentProductCodeChanged() {
         return this.hasReceived;
+    }
 
+    public WordIndex getWordIndex() {
+        return wordIndex;
     }
 }

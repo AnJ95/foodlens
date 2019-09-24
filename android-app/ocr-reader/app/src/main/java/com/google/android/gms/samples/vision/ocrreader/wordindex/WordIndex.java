@@ -2,10 +2,11 @@ package com.google.android.gms.samples.vision.ocrreader.wordindex;
 
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WordIndex {
+public class WordIndex implements Serializable {
 
     private Map<String, Word> words = new HashMap<>();
 

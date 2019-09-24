@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.samples.vision.ocrreader.R;
 import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
@@ -57,6 +58,8 @@ public final class IndexActivity extends AppCompatActivity  {
 
     TextRecognizer textRecognizer;
     private ProgressBar mProgressBar;
+
+    public static final String WordIndex = "WordIndex";
 
 
     /**
@@ -131,7 +134,11 @@ public final class IndexActivity extends AppCompatActivity  {
                 }
             }
 
-            // TODO Done
+            // Done, return WordIndex as result
+            Intent data = new Intent();
+            data.putExtra(WordIndex, processor.getWordIndex());
+            setResult(CommonStatusCodes.SUCCESS, data);
+            finish();
         }
 
         private boolean next() {

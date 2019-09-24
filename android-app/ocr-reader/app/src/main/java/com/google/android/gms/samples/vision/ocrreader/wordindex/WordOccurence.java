@@ -2,7 +2,9 @@ package com.google.android.gms.samples.vision.ocrreader.wordindex;
 
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
-class WordOccurence {
+import java.io.Serializable;
+
+class WordOccurence implements Serializable {
     private String productCode;
     private Rectangle normalizedRect;
 

@@ -21,13 +21,17 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.samples.vision.ocrreader.R;
+import com.google.android.gms.samples.vision.ocrreader.Serializer;
 import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureActivity;
 import com.google.android.gms.samples.vision.ocrreader.activites.index.IndexActivity;
+import com.google.android.gms.samples.vision.ocrreader.activites.productcapture.ProductCaptureActivity;
+import com.google.android.gms.samples.vision.ocrreader.wordindex.WordIndex;
 
 /**
  * Main activity demonstrating how to pass extra parameters to an activity that
@@ -41,9 +45,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView statusMessage;
     private TextView textValue;
 
-    private static final int RC_OCR_INDEX = 9006;
-    private static final int RC_OCR_CAPTURE = 9003;
+    private static final int RC_INDEX = 9006;
+    private static final int RC_BLOCK_CAPTURE = 9003;
+    private static final int RC_PRODUCT_CAPTURE = 9009;
+
     private static final String TAG = "MainActivity";
+
+    private static final String WORD_INDEX_PATH = "wordIndex.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         useFlash = (CompoundButton) findViewById(R.id.use_flash);
 
         findViewById(R.id.read_text).setOnClickListener(this);
+        findViewById(R.id.index_products).setOnClickListener(this);
+
+        // show product detection only if WordIndex exists
+        onWordIndexExistsChanged();
+
+        //WordIndex index = new WordIndex();
+        //index.addWordOccurence("A", "123", new Rectangle<Float>(0f,0f,0.5f,0.5f));
+        //index.addWordOccurence("B", "123", new Rectangle<Float>(0.5f,0.5f,0f,0f));
+
+        //Serializer<WordIndex> serializer = new Serializer<>();
+        //serializer.save(getBaseContext(), WORD_INDEX_PATH, index);
+        //WordIndex newWordIndex = new Serializer<>();serializer.load(getBaseContext(), WORD_INDEX_PATH);
+        //Log.d("Serializer", newWordIndex.toString());
+    }
+
+    private void onWordIndexExistsChanged() {
+        boolean wordIndexExists = Serializer.exists(getBaseContext(), WORD_INDEX_PATH);
+        ((CheckBox)findViewById(R.id.are_products_indexed)).setChecked(wordIndexExists);
+        findViewById(R.id.detect_products).setVisibility(wordIndexExists ? View.VISIBLE : View.INVISIBLE);
     }
 
     /**
@@ -66,17 +93,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.index_products) {
-            Intent intent = new Intent(this, IndexActivity.class);
-            startActivityForResult(intent, RC_OCR_INDEX);
-        } else if (v.getId() == R.id.read_text) {
-            // launch Ocr capture activity.
-            Intent intent = new Intent(this, BlockCaptureActivity.class);
-            intent.putExtra(BlockCaptureActivity.AutoFocus, autoFocus.isChecked());
-            intent.putExtra(BlockCaptureActivity.UseFlash, useFlash.isChecked());
-
-            startActivityForResult(intent, RC_OCR_CAPTURE);
+        switch (v.getId()) {
+            case R.id.index_products:
+                Intent intent = new Intent(this, IndexActivity.class);
+                startActivityForResult(intent, RC_INDEX);
+                break;
+            case R.id.read_text:
+                intent = new Intent(this, BlockCaptureActivity.class);
+                intent.putExtra(BlockCaptureActivity.AutoFocus, autoFocus.isChecked());
+                intent.putExtra(BlockCaptureActivity.UseFlash, useFlash.isChecked());
+                startActivityForResult(intent, RC_BLOCK_CAPTURE);
+                break;
+            case R.id.detect_products:
+                intent = new Intent(this, ProductCaptureActivity.class);
+                intent.putExtra(ProductCaptureActivity.WordIndex, new Serializer<WordIndex>().load(getBaseContext(), WORD_INDEX_PATH));
+                startActivityForResult(intent, RC_PRODUCT_CAPTURE);
+                break;
         }
+
+
     }
 
     /**
@@ -103,7 +138,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == RC_OCR_CAPTURE) {
+        if(requestCode == RC_BLOCK_CAPTURE) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     String text = data.getStringExtra(BlockCaptureActivity.TextBlockObject);
@@ -113,6 +148,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 } else {
                     statusMessage.setText(R.string.ocr_failure);
                     Log.d(TAG, "No Text captured, intent data is null");
+                }
+            } else {
+                statusMessage.setText(String.format(getString(R.string.ocr_error),
+                        CommonStatusCodes.getStatusCodeString(resultCode)));
+            }
+        }
+        if(requestCode == RC_INDEX) {
+            if (resultCode == CommonStatusCodes.SUCCESS) {
+                if (data != null) {
+                    WordIndex index = (WordIndex) data.getSerializableExtra(IndexActivity.WordIndex);
+
+                    (new Serializer<WordIndex>()).save(getBaseContext(), WORD_INDEX_PATH, index);
+                    onWordIndexExistsChanged();
+                    Log.d(TAG, "Received WordIndex: " + index.toString());
+                } else {
+                    statusMessage.setText(R.string.ocr_failure);
+                    Log.d(TAG, "No WordIndex received, intent data is null");
                 }
             } else {
                 statusMessage.setText(String.format(getString(R.string.ocr_error),

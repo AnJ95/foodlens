@@ -2,11 +2,12 @@ package com.google.android.gms.samples.vision.ocrreader.wordindex;
 
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
+import java.io.Serializable;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
-class Word extends Hashtable {
+class Word extends Hashtable implements Serializable {
 
     private List<WordOccurence> occurences = new LinkedList<>();
 

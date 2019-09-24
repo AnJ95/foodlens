@@ -56,7 +56,7 @@ import java.io.IOException;
  * rear facing camera. During detection overlay graphics are drawn to indicate the position,
  * size, and contents of each TextBlock.
  */
-public final class BlockCaptureActivity extends AppCompatActivity {
+public class BlockCaptureActivity extends AppCompatActivity {
     private static final String TAG = "BlockCaptureActivity";
 
     // Intent request code to handle updating play services if needed.

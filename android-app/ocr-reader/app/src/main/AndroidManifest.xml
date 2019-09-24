@@ -34,6 +34,7 @@
 
         <activity android:name="com.google.android.gms.samples.vision.ocrreader.activites.index.IndexActivity"
             android:label="Indexing" />
+        <activity android:name="com.google.android.gms.samples.vision.ocrreader.activites.productcapture.ProductCaptureActivity" android:label="Detect Products" />
     </application>
 
 </manifest>

@@ -39,13 +39,34 @@
         />
 
     <Button
+        android:id="@+id/index_products"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/index_products"
-        android:id="@+id/index_products"
         android:layout_above="@+id/read_text"
         android:layout_centerHorizontal="true"
         />
+
+    <Button
+        android:id="@+id/detect_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detect_products"
+        android:layout_above="@+id/index_products"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        />
+
+    <CheckBox
+        android:id="@+id/are_products_indexed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/read_text"
+        android:layout_toEndOf="@+id/index_products"
+        android:layout_toRightOf="@+id/index_products"
+        android:enabled="false"
+        />
+
 
     <CheckBox
         android:layout_width="wrap_content"

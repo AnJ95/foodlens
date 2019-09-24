@@ -1,6 +1,8 @@
 package com.google.android.gms.samples.vision.ocrreader.primitive;
 
-public class Rectangle<T> {
+import java.io.Serializable;
+
+public class Rectangle<T> implements Serializable {
     public T left;
     public T top;
     public T right;
