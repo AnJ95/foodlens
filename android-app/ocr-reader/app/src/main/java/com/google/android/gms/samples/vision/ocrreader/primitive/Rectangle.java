@@ -1,4 +1,4 @@
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.primitive;
 
 public class Rectangle<T> {
     public T left;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.activites.blockcapture;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -42,6 +41,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.samples.vision.ocrreader.R;
+import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.CameraSource;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.CameraSourcePreview;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
@@ -55,8 +56,8 @@ import java.io.IOException;
  * rear facing camera. During detection overlay graphics are drawn to indicate the position,
  * size, and contents of each TextBlock.
  */
-public final class OcrCaptureActivity extends AppCompatActivity {
-    private static final String TAG = "OcrCaptureActivity";
+public final class BlockCaptureActivity extends AppCompatActivity {
+    private static final String TAG = "BlockCaptureActivity";
 
     // Intent request code to handle updating play services if needed.
     private static final int RC_HANDLE_GMS = 9001;
@@ -71,7 +72,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
 
     private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
-    private GraphicOverlay<OcrGraphic> mGraphicOverlay;
+    private GraphicOverlay<OverlayGraphic> mGraphicOverlay;
 
     // Helper objects for detecting taps and pinches.
     private ScaleGestureDetector scaleGestureDetector;
@@ -86,7 +87,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         setContentView(R.layout.ocr_capture);
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
-        mGraphicOverlay = (GraphicOverlay<OcrGraphic>) findViewById(R.id.graphicOverlay);
+        mGraphicOverlay = (GraphicOverlay<OverlayGraphic>) findViewById(R.id.graphicOverlay);
 
         // read parameters from the intent used to launch the activity.
         boolean autoFocus = getIntent().getBooleanExtra(AutoFocus, false);
@@ -166,7 +167,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         // is set to receive the text recognition results and display graphics for each text block
         // on screen.
         TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build();
-        textRecognizer.setProcessor(new OcrDetectorProcessor(mGraphicOverlay));
+        textRecognizer.setProcessor(new BlockCaptureProcessor(mGraphicOverlay));
 
         if (!textRecognizer.isOperational()) {
             // Note: The first time that an app using a Vision API is installed on a
@@ -321,7 +322,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
      * @return true if the activity is ending.
      */
     private boolean onTap(float rawX, float rawY) {
-        OcrGraphic graphic = mGraphicOverlay.getGraphicAtLocation(rawX, rawY);
+        OverlayGraphic graphic = mGraphicOverlay.getGraphicAtLocation(rawX, rawY);
         TextBlock text = null;
         if (graphic != null) {
             text = graphic.getTextBlock();

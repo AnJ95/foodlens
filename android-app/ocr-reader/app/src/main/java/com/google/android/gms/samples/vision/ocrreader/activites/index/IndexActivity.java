@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.activites.index;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -34,6 +34,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.samples.vision.ocrreader.R;
+import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Frame;
@@ -46,15 +48,12 @@ import java.io.IOException;
  * rear facing camera. During detection overlay graphics are drawn to indicate the position,
  * size, and contents of each TextBlock.
  */
-public final class OcrIndexingActivity extends AppCompatActivity  {
-    private static final String TAG = "OcrIndexingActivity";
-
-    // Intent request code to handle updating play services if needed.
-    private static final int RC_HANDLE_GMS = 9001;
+public final class IndexActivity extends AppCompatActivity  {
+    private static final String TAG = "IndexActivity";
 
     private ImageView mPreview;
-    private GraphicOverlay<OcrGraphic> mGraphicOverlay;
-    private OcrIndexingProcessor processor;
+    private GraphicOverlay<OverlayGraphic> mGraphicOverlay;
+    private IndexProcessor processor;
 
     TextRecognizer textRecognizer;
     private ProgressBar mProgressBar;
@@ -71,9 +70,9 @@ public final class OcrIndexingActivity extends AppCompatActivity  {
 
 
         mPreview = (ImageView) findViewById(R.id.imageView);
-        mGraphicOverlay = (GraphicOverlay<OcrGraphic>) findViewById(R.id.graphicOverlay);
+        mGraphicOverlay = (GraphicOverlay<OverlayGraphic>) findViewById(R.id.graphicOverlay);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        processor = new OcrIndexingProcessor(mGraphicOverlay);
+        processor = new IndexProcessor(mGraphicOverlay);
         textRecognizer = createTextRecognizer();
 
 

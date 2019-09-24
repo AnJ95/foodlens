@@ -1,8 +1,6 @@
 package com.google.android.gms.samples.vision.ocrreader.wordindex;
 
-import android.graphics.Rect;
-
-import com.google.android.gms.samples.vision.ocrreader.Rectangle;
+import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
 import java.util.Hashtable;
 import java.util.LinkedList;

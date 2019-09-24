@@ -20,7 +20,7 @@
             android:value="ocr" />
 
         <activity
-            android:name="com.google.android.gms.samples.vision.ocrreader.MainActivity"
+            android:name="com.google.android.gms.samples.vision.ocrreader.activites.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,10 +29,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.google.android.gms.samples.vision.ocrreader.OcrCaptureActivity"
+        <activity android:name="com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureActivity"
             android:label="Read Text" />
 
-        <activity android:name="com.google.android.gms.samples.vision.ocrreader.OcrIndexingActivity"
+        <activity android:name="com.google.android.gms.samples.vision.ocrreader.activites.index.IndexActivity"
             android:label="Indexing" />
     </application>
 

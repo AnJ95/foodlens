@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +25,9 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.samples.vision.ocrreader.R;
+import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureActivity;
+import com.google.android.gms.samples.vision.ocrreader.activites.index.IndexActivity;
 
 /**
  * Main activity demonstrating how to pass extra parameters to an activity that
@@ -65,10 +68,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.read_text) {
             // launch Ocr capture activity.
-            //Intent intent = new Intent(this, OcrCaptureActivity.class);
-            //intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
-            //intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
-            Intent intent = new Intent(this, OcrIndexingActivity.class);
+            //Intent intent = new Intent(this, BlockCaptureActivity.class);
+            //intent.putExtra(BlockCaptureActivity.AutoFocus, autoFocus.isChecked());
+            //intent.putExtra(BlockCaptureActivity.UseFlash, useFlash.isChecked());
+            Intent intent = new Intent(this, IndexActivity.class);
 
             startActivityForResult(intent, RC_OCR_INDEX);
         }
@@ -101,7 +104,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if(requestCode == RC_OCR_CAPTURE) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
-                    String text = data.getStringExtra(OcrCaptureActivity.TextBlockObject);
+                    String text = data.getStringExtra(BlockCaptureActivity.TextBlockObject);
                     statusMessage.setText(R.string.ocr_success);
                     textValue.setText(text);
                     Log.d(TAG, "Text read: " + text);

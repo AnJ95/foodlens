@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.activites.blockcapture;
 
 import android.util.SparseArray;
 
+import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
@@ -25,11 +26,11 @@ import com.google.android.gms.vision.text.TextBlock;
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay
  * as OcrGraphics.
  */
-public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
+public class BlockCaptureProcessor implements Detector.Processor<TextBlock> {
 
-    private GraphicOverlay<OcrGraphic> mGraphicOverlay;
+    private GraphicOverlay<OverlayGraphic> mGraphicOverlay;
 
-    OcrDetectorProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
+    public BlockCaptureProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay) {
         mGraphicOverlay = ocrGraphicOverlay;
     }
 
@@ -46,7 +47,7 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
         SparseArray<TextBlock> items = detections.getDetectedItems();
         for (int i = 0; i < items.size(); ++i) {
             TextBlock item = items.valueAt(i);
-            OcrGraphic graphic = new OcrGraphic(mGraphicOverlay, item);
+            OverlayGraphic graphic = new OverlayGraphic(mGraphicOverlay, item);
             mGraphicOverlay.add(graphic);
         }
     }

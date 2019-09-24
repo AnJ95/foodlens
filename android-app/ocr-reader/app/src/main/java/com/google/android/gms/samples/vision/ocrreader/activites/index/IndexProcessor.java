@@ -13,13 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.activites.index;
 
 
 import android.graphics.Rect;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureProcessor;
+import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
+import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.samples.vision.ocrreader.wordindex.WordIndex;
 import com.google.android.gms.vision.Detector;
@@ -34,7 +37,7 @@ import java.util.List;
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay
  * as OcrGraphics.
  */
-public class OcrIndexingProcessor extends OcrDetectorProcessor {
+public class IndexProcessor extends BlockCaptureProcessor {
 
     public String currentProductCode;
     private boolean hasReceived = false;
@@ -42,7 +45,7 @@ public class OcrIndexingProcessor extends OcrDetectorProcessor {
     private WordIndex wordIndex = new WordIndex();
 
 
-    OcrIndexingProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
+    IndexProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay) {
         super(ocrGraphicOverlay);
     }
 

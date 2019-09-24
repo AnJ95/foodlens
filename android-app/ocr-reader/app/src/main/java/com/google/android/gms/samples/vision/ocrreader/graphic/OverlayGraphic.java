@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.ocrreader;
+package com.google.android.gms.samples.vision.ocrreader.graphic;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -30,7 +30,7 @@ import java.util.List;
  * Graphic instance for rendering TextBlock position, size, and ID within an associated graphic
  * overlay view.
  */
-public class OcrGraphic extends GraphicOverlay.Graphic {
+public class OverlayGraphic extends GraphicOverlay.Graphic {
 
     private int mId;
 
@@ -40,7 +40,7 @@ public class OcrGraphic extends GraphicOverlay.Graphic {
     private static Paint sTextPaint;
     private final TextBlock mText;
 
-    OcrGraphic(GraphicOverlay overlay, TextBlock text) {
+    public OverlayGraphic(GraphicOverlay overlay, TextBlock text) {
         super(overlay);
 
         mText = text;
