@@ -10,19 +10,15 @@
 **Beschreibe Dein Projekt kurz.** *Max. 700 Zeichen*  
 Im heutigen Supermarkt wählen wir aus einer Fülle von Produkten aus. Dabei können wir nicht für jedes Produkt eine faktenbasierte Entscheidung treffen. Stattdessen fundiert unser Vertrauen in das Produkt zu einem Großteil auf dessen Marketing. Für unser Projekt entwickeln wir eine App die dem Kunden Licht in den Produktdschungel bringt. Mittels Bilderkennung kann der Benutzer mehrere Produkte, deren Inhaltsstoffe und Nährwerte direkt im Supermarktregal vergleichen. Interessante Metriken wie der Nutri-Score sowie eine Filterung nach Allergien, Intoleranzen oder Fleischanteil werden dem Nutzer in einer Augmented Reality Experience über das Produkt gelegt.
 
-Dass zum Bewältigen der Klimakrise jeder Einzelne seinen Beitrag leisten muss ist in den letzten Jahren in der Bevölkerung angekommen.
 
-
-Das Projekt hat zwei zentrale Aufgaben: Mittels der Kamera und Bilderkennung sollen bequem mehrere Produkte im Supermarktregal gleichzeitig erfasst und mittels einer Datenbank aus Produktbildern identifiziert werden. Daraufhin sollen dem Nutzer zusätzliche Informationen über die erkannten Produkte in einer Augmented Reality Ansicht zugänglich gemacht werden
-* Infos und Vergleich Inhaltsstoffe
-* Allergien & Unverträglichkeiten
-* Produktvergleich (insb. durch Multi-Erkennung und weil ähnliche Produkte nebeneinander stehen)
 
 
 **Welches gesellschaftliche Problem willst Du mit Deinem Projekt lösen?** *Max. 700 Zeichen*  
-Der Gang zum Supermarkt ist eine Notwendigkeit beinahe jedes Menschen nicht nur in Industrienationen. Gleichzeitig hängt der Bericht des IPCCs wie ein Schatten über den Köpfen der Menschen und die Awareness über den Klimawandel ist auf einem nie dagewesenen Hoch.
-Umso seltsamer ist es, dass selbst umweltbewusste Menschen sich bei der Produktwahl im Supermarkt lediglich auf Bio- und FairTrade-Siegel verlassen können.
-Wir behaupten im Informationszeitalter zu leben und dennoch beschränken sich unsere genormten Produktinformationshinweise auf Inhaltsstoffe und eine Hand voll Siegeln.
+
+Der Bericht des IPCCs hängt wie ein Schatten über den Köpfen der Menschen und das Bewusstsein für den Klimawandel ist auf einem nie dagewesenen Hoch. Der Deutsche geht 209 mal pro Jahr in den Supermarkt und steht dabei vor klima- gesundheits- sowie sozioökonomisch relevanten Entscheidungen. Die Marketingindustrie hat viele Wege gefunden dem Nutzer diese Entscheidung abzubehmen und auf unwesentliche Äußerlichkeiten zu reduzieren. Wir behaupten im Informationszeitalter zu leben jedoch hat selbst der investierte Nutzer nicht die nötigen Informationen oder nicht die nötige Zeit seinem Gewissen gerecht zu entscheiden. Unsere App gibt dem Nutzer die Informationen die er braucht und verdient.
+
+
+
 
 **Wie willst Du Dein Projekt technisch umsetzen?** *Max. 1300 Zeichen*  
 
@@ -51,3 +47,17 @@ Die hauseigene App von OpenFoodFacts verwendet für die Erkennung des Produkts d
 **Wie viele Stunden willst Du (bzw. will das Team) in den 6 Monaten Förderzeitraum an der Umsetzung arbeiten?** *Bitte eine Zahl eintragen.*  
 
 **Skizziere kurz die wichtigsten Meilensteine, die Du (bzw. das Team) im Förderzeitraum umsetzen willst.** *Max. 700 Zeichen*  
+
+
+
+
+
+
+
+Dass zum Bewältigen der Klimakrise jeder Einzelne seinen Beitrag leisten muss ist in den letzten Jahren in der Bevölkerung angekommen.
+
+
+Das Projekt hat zwei zentrale Aufgaben: Mittels der Kamera und Bilderkennung sollen bequem mehrere Produkte im Supermarktregal gleichzeitig erfasst und mittels einer Datenbank aus Produktbildern identifiziert werden. Daraufhin sollen dem Nutzer zusätzliche Informationen über die erkannten Produkte in einer Augmented Reality Ansicht zugänglich gemacht werden
+* Infos und Vergleich Inhaltsstoffe
+* Allergien & Unverträglichkeiten
+* Produktvergleich (insb. durch Multi-Erkennung und weil ähnliche Produkte nebeneinander stehen)
