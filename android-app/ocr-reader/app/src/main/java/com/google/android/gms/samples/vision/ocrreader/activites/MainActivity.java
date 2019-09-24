@@ -66,6 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         findViewById(R.id.read_text).setOnClickListener(this);
         findViewById(R.id.index_products).setOnClickListener(this);
+        findViewById(R.id.detect_products).setOnClickListener(this);
 
         // show product detection only if WordIndex exists
         onWordIndexExistsChanged();
@@ -106,6 +107,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.detect_products:
                 intent = new Intent(this, ProductCaptureActivity.class);
+                intent.putExtra(BlockCaptureActivity.AutoFocus, autoFocus.isChecked());
+                intent.putExtra(BlockCaptureActivity.UseFlash, useFlash.isChecked());
                 intent.putExtra(ProductCaptureActivity.WordIndex, new Serializer<WordIndex>().load(getBaseContext(), WORD_INDEX_PATH));
                 startActivityForResult(intent, RC_PRODUCT_CAPTURE);
                 break;
