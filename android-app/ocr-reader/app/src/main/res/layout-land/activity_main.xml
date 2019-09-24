@@ -29,13 +29,25 @@
         android:layout_alignRight="@+id/status_message"
         android:layout_alignEnd="@+id/status_message" />
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/read_text"
         android:id="@+id/read_text"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/index_products"
+        android:id="@+id/index_products"
+        android:layout_above="@+id/read_text"
+        android:layout_centerHorizontal="true"
+        />
+
 
     <CheckBox
         android:layout_width="wrap_content"
