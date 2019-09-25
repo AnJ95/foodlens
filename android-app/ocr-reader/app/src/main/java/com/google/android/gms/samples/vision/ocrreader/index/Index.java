@@ -1,9 +1,12 @@
 package com.google.android.gms.samples.vision.ocrreader.index;
 
 
+import android.text.TextUtils;
+
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -22,6 +25,14 @@ public class Index implements Serializable {
     @Override
     public String toString() {
         return wordIndex.toString() + " " + productIndex.toString();
+    }
+
+    public String toLongString() {
+        List<String> longStrings = new LinkedList<>();
+        for (Product product : productIndex.products.values()) {
+            longStrings.add(product.toLongString());
+        }
+        return String.format("### Index\n#%s\n#%s\n###", toString(), TextUtils.join("; ", longStrings));
     }
 
     public Word tryGetWord(String text) {

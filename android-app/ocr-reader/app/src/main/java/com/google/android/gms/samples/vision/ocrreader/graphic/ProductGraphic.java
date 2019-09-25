@@ -14,34 +14,42 @@ public class ProductGraphic extends GraphicOverlay.Graphic   {
 
     private int mId;
 
-    private static final int TEXT_COLOR = Color.WHITE;
-
-    private static Paint sRectPaint;
-    private static Paint sTextPaint;
+    private Paint sRectPaint;
+    private Paint sTextPaint;
     private final Product mProduct;
     private final Rect mRect;
 
+    private final static int MIN_ALPHA = 80;
+    private final float confidence;
 
-    public ProductGraphic(GraphicOverlay overlay, Product product, Rect rect) {
+
+
+    public ProductGraphic(GraphicOverlay overlay, Product product, Rect rect, float confidence) {
         super(overlay);
 
         mProduct = product;
         mRect = rect;
+        this.confidence = confidence;
 
+        int color = Color.argb(MIN_ALPHA + Math.round(clamp(confidence, 0, 1) * (255-MIN_ALPHA)), 255, 255, 255);
         if (sRectPaint == null) {
             sRectPaint = new Paint();
-            sRectPaint.setColor(TEXT_COLOR);
+            sRectPaint.setColor(color);
             sRectPaint.setStyle(Paint.Style.STROKE);
             sRectPaint.setStrokeWidth(4.0f);
         }
 
         if (sTextPaint == null) {
             sTextPaint = new Paint();
-            sTextPaint.setColor(TEXT_COLOR);
-            sTextPaint.setTextSize(54.0f);
+            sTextPaint.setColor(color);
+            sTextPaint.setTextSize(84.0f);
         }
         // Redraw the overlay, as this graphic has been added.
         postInvalidate();
+    }
+
+    private float clamp(float val, float min, float max) {
+        return val < min ? min : (val > max ? max : val);
     }
 
     public int getId() {
@@ -97,6 +105,7 @@ public class ProductGraphic extends GraphicOverlay.Graphic   {
 
         canvas.drawRect(rect, sRectPaint);
         canvas.drawText(mProduct.productCode, rect.left, rect.bottom, sTextPaint);
+        canvas.drawText(Float.toString(Math.round(confidence * 100f) / 100f), rect.right, rect.top, sTextPaint);
 
     }
 }

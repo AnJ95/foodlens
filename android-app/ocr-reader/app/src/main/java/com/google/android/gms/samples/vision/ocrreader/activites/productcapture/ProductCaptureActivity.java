@@ -19,7 +19,7 @@ public class ProductCaptureActivity extends BlockCaptureActivity {
         index = (Index) getIntent().getSerializableExtra(Index);
         super.onCreate(icicle);
 
-        Log.d(TAG, "Received " + index);
+        Log.d(TAG, index.toLongString());
 
     }
 

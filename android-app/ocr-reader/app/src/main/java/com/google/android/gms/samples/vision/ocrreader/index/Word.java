@@ -21,6 +21,11 @@ public class Word implements Serializable {
         return text.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return text;
+    }
+
     WordOccurence addOccurence(String productCode, Rectangle normalizedRect) {
         WordOccurence occurence = new WordOccurence(productCode, normalizedRect);
         occurences.add(occurence);

@@ -1,6 +1,7 @@
 package com.google.android.gms.samples.vision.ocrreader.activites.productcapture;
 
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -15,18 +16,25 @@ import com.google.android.gms.vision.text.Element;
 import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 public class ProductCaptureProcessor extends BlockCaptureProcessor {
     private final Index mIndex;
 
+    private static final String TAG = "ProductCaptureProcessor";
+
     public ProductCaptureProcessor(GraphicOverlay ocrGraphicOverlay, Index index) {
         super(ocrGraphicOverlay);
         this.mIndex = index;
+
     }
 
     @Override
@@ -68,7 +76,9 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
         }
 
 
-        mGraphicOverlay.clear();
+        Queue<PossibleMatch> matches = new PriorityQueue<>();
+        // Iterate each product candidate
+        //   and its respective words
         for (Map.Entry<Product, Set<Word>> entry : matchingWords.entrySet()) {
             Product product = entry.getKey();
             Set<Word> wordsFound = entry.getValue();
@@ -81,6 +91,7 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
             int numExpectedWords = wordsExpected.size();
             int numFoundWords = wordsFound.size();
 
+            // calc (lengthBefore - lengthAfter) to ignore unwanted duplicates in wordsFound
             int lengthBefore = wordsExpected.size();
             for (Word word : wordsFound) {
                 wordsExpected.remove(word); // remove to count
@@ -95,18 +106,55 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
             }
             int lengthAfter = wordsExpected.size();
 
-            float fracOfExpectedWords = wordsExpected.size() / (float) (lengthBefore - lengthAfter);
+            // "How many of the expected Words fit?"
+            float fracOfExpectedWords = (lengthBefore - lengthAfter) / (float) numExpectedWords;
 
-            if (numFoundWords >= 3 || fracOfExpectedWords >= 0.5) {
-                ProductGraphic graphic = new ProductGraphic(mGraphicOverlay, product, productBB);
-                mGraphicOverlay.add(graphic);
-            }
+            matches.add(new PossibleMatch(product, productBB, fracOfExpectedWords));
         }
 
+        // Make sure nothing overlaps
+        //   by starting with high confidence
+        mGraphicOverlay.clear();
+        PossibleMatch match;
+        List<Rect> chosenRects = new LinkedList<>();
+        while ((match = matches.poll()) != null) {
 
-        //OverlayGraphic graphic = new OverlayGraphic(mGraphicOverlay, product, unionRect);
-        //mGraphicOverlay.add(graphic);
+            // go to next if overlapping with previous
+            boolean overlap = false;
+            for (Rect chosenRect : chosenRects) {
+                if (match.productBB.intersect(chosenRect)) {
+                    overlap = true;
+                }
+            }
+
+            if (!overlap) {
+                mGraphicOverlay.add(match.createProductGraphic());
+                chosenRects.add(match.productBB);
+            }
+
+        }
 
     }
 
+
+    private class PossibleMatch implements Comparable<PossibleMatch> {
+        private final Product product;
+        private final Rect productBB;
+        private final float confidence;
+
+        private PossibleMatch(Product product, Rect productBB, float confidence) {
+            this.product = product;
+            this.productBB = productBB;
+            this.confidence = confidence;
+        }
+
+        @Override
+        public int compareTo(@NonNull PossibleMatch possibleMatch) {
+            return -Float.compare(confidence, possibleMatch.confidence);
+        }
+
+        private ProductGraphic createProductGraphic() {
+            return new ProductGraphic(mGraphicOverlay, product, productBB, confidence);
+        }
+    }
 }

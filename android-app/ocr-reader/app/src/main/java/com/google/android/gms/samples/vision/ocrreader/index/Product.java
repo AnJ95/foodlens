@@ -1,8 +1,12 @@
 package com.google.android.gms.samples.vision.ocrreader.index;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,5 +29,13 @@ public class Product implements Serializable {
 
     public Set<Word> getWords() {
         return new HashSet<>(occurences.keySet());
+    }
+
+    public String toLongString() {
+        List<String> words = new LinkedList<>();
+        for (Word word : occurences.keySet()) {
+            words.add(word.toString());
+        }
+        return "Product(" + productCode + ", " + occurences.size() + " words: {" + TextUtils.join(", ", words) + "})";
     }
 }
