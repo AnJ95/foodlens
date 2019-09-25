@@ -1,13 +1,12 @@
-package com.google.android.gms.samples.vision.ocrreader.wordindex;
+package com.google.android.gms.samples.vision.ocrreader.index;
 
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
 import java.io.Serializable;
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
-class Word extends Hashtable implements Serializable {
+public class Word implements Serializable {
 
     private List<WordOccurence> occurences = new LinkedList<>();
 
@@ -22,7 +21,9 @@ class Word extends Hashtable implements Serializable {
         return text.hashCode();
     }
 
-    void addOccurence(String productCode, Rectangle normalizedRect) {
-        occurences.add(new WordOccurence(productCode, normalizedRect));
+    WordOccurence addOccurence(String productCode, Rectangle normalizedRect) {
+        WordOccurence occurence = new WordOccurence(productCode, normalizedRect);
+        occurences.add(occurence);
+        return occurence;
     }
 }

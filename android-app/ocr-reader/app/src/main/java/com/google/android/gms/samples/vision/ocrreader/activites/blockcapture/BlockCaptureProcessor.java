@@ -28,7 +28,7 @@ import com.google.android.gms.vision.text.TextBlock;
  */
 public class BlockCaptureProcessor implements Detector.Processor<TextBlock> {
 
-    private GraphicOverlay<OverlayGraphic> mGraphicOverlay;
+    protected GraphicOverlay<OverlayGraphic> mGraphicOverlay;
 
     public BlockCaptureProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay) {
         mGraphicOverlay = ocrGraphicOverlay;

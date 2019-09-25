@@ -31,7 +31,8 @@ import com.google.android.gms.samples.vision.ocrreader.Serializer;
 import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureActivity;
 import com.google.android.gms.samples.vision.ocrreader.activites.index.IndexActivity;
 import com.google.android.gms.samples.vision.ocrreader.activites.productcapture.ProductCaptureActivity;
-import com.google.android.gms.samples.vision.ocrreader.wordindex.WordIndex;
+import com.google.android.gms.samples.vision.ocrreader.index.Index;
+
 
 /**
  * Main activity demonstrating how to pass extra parameters to an activity that
@@ -51,7 +52,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
 
-    private static final String WORD_INDEX_PATH = "wordIndex.txt";
+    private static final String INDEX_PATH = "index.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void onWordIndexExistsChanged() {
-        boolean wordIndexExists = Serializer.exists(getBaseContext(), WORD_INDEX_PATH);
+        boolean wordIndexExists = Serializer.exists(getBaseContext(), INDEX_PATH);
         ((CheckBox)findViewById(R.id.are_products_indexed)).setChecked(wordIndexExists);
         findViewById(R.id.detect_products).setVisibility(wordIndexExists ? View.VISIBLE : View.INVISIBLE);
     }
@@ -109,7 +110,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 intent = new Intent(this, ProductCaptureActivity.class);
                 intent.putExtra(BlockCaptureActivity.AutoFocus, autoFocus.isChecked());
                 intent.putExtra(BlockCaptureActivity.UseFlash, useFlash.isChecked());
-                intent.putExtra(ProductCaptureActivity.WordIndex, new Serializer<WordIndex>().load(getBaseContext(), WORD_INDEX_PATH));
+                intent.putExtra(ProductCaptureActivity.Index, new Serializer<Index>().load(getBaseContext(), INDEX_PATH));
                 startActivityForResult(intent, RC_PRODUCT_CAPTURE);
                 break;
         }
@@ -160,14 +161,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if(requestCode == RC_INDEX) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
-                    WordIndex index = (WordIndex) data.getSerializableExtra(IndexActivity.WordIndex);
+                    Index index = (Index) data.getSerializableExtra(IndexActivity.Index);
 
-                    (new Serializer<WordIndex>()).save(getBaseContext(), WORD_INDEX_PATH, index);
+                    (new Serializer<Index>()).save(getBaseContext(), INDEX_PATH, index);
                     onWordIndexExistsChanged();
-                    Log.d(TAG, "Received WordIndex: " + index.toString());
+                    Log.d(TAG, "Received Index: " + index.toString());
                 } else {
                     statusMessage.setText(R.string.ocr_failure);
-                    Log.d(TAG, "No WordIndex received, intent data is null");
+                    Log.d(TAG, "No Index received, intent data is null");
                 }
             } else {
                 statusMessage.setText(String.format(getString(R.string.ocr_error),

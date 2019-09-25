@@ -59,7 +59,7 @@ public final class IndexActivity extends AppCompatActivity  {
     TextRecognizer textRecognizer;
     private ProgressBar mProgressBar;
 
-    public static final String WordIndex = "WordIndex";
+    public static final String Index = "Index";
 
 
     /**
@@ -136,7 +136,7 @@ public final class IndexActivity extends AppCompatActivity  {
 
             // Done, return WordIndex as result
             Intent data = new Intent();
-            data.putExtra(WordIndex, processor.getWordIndex());
+            data.putExtra(Index, processor.getIndex());
             setResult(CommonStatusCodes.SUCCESS, data);
             finish();
         }

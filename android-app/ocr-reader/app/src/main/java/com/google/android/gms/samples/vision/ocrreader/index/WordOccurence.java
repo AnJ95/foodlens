@@ -1,4 +1,4 @@
-package com.google.android.gms.samples.vision.ocrreader.wordindex;
+package com.google.android.gms.samples.vision.ocrreader.index;
 
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 

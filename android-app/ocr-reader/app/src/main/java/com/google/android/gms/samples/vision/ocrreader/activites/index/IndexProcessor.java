@@ -22,9 +22,9 @@ import android.util.SparseArray;
 
 import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureProcessor;
 import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
+import com.google.android.gms.samples.vision.ocrreader.index.Index;
 import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
-import com.google.android.gms.samples.vision.ocrreader.wordindex.WordIndex;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.Element;
 import com.google.android.gms.vision.text.Text;
@@ -42,7 +42,7 @@ public class IndexProcessor extends BlockCaptureProcessor {
     public String currentProductCode;
     private boolean hasReceived = false;
 
-    private WordIndex wordIndex = new WordIndex();
+    private Index index = new Index();
 
 
     IndexProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay) {
@@ -87,11 +87,11 @@ public class IndexProcessor extends BlockCaptureProcessor {
                     normalize(minRect.right, maxRect.right, rect.right),
                     normalize(minRect.bottom, maxRect.bottom, rect.bottom)
             );
-            wordIndex.addWordOccurence(elem.getValue(), currentProductCode, normalizedRect);
+            index.addWordOccurence(elem.getValue(), currentProductCode, normalizedRect);
             //Log.d("Detection", normalizedRect + ": " + elem.getValue());
         }
 
-        Log.d("Detection", "detected " + allElements.size() + " words in " + currentProductCode + " => " + wordIndex.toString());
+        Log.d("Detection", "detected " + allElements.size() + " words in " + currentProductCode + " => " + index.toString());
 
         hasReceived = true;
     }
@@ -127,7 +127,7 @@ public class IndexProcessor extends BlockCaptureProcessor {
         return this.hasReceived;
     }
 
-    public WordIndex getWordIndex() {
-        return wordIndex;
+    public Index getIndex() {
+        return index;
     }
 }
