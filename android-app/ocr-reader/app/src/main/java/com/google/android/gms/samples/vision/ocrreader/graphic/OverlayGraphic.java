@@ -81,11 +81,10 @@ public class OverlayGraphic extends GraphicOverlay.Graphic {
      * @return True if the provided point is contained within this graphic's bounding box.
      */
     public boolean contains(float x, float y) {
-        TextBlock text = mText;
-        if (text == null) {
+        if (mText == null) {
             return false;
         }
-        RectF rect = new RectF(text.getBoundingBox());
+        RectF rect = new RectF(mText.getBoundingBox());
         rect.left = translateX(rect.left);
         rect.top = translateY(rect.top);
         rect.right = translateX(rect.right);
@@ -93,18 +92,25 @@ public class OverlayGraphic extends GraphicOverlay.Graphic {
         return (rect.left < x && rect.right > x && rect.top < y && rect.bottom > y);
     }
 
+    @Override
+    public String getText() {
+        if (mText == null) {
+            return null;
+        }
+        return mText.getValue();
+    }
+
     /**
      * Draws the text block annotations for position, size, and raw value on the supplied canvas.
      */
     @Override
     public void draw(Canvas canvas) {
-        TextBlock text = mText;
-        if (text == null) {
+        if (mText == null) {
             return;
         }
 
         // Draws the bounding box around the TextBlock.
-        RectF rect = new RectF(text.getBoundingBox());
+        RectF rect = new RectF(mText.getBoundingBox());
         rect.left = translateX(rect.left);
         rect.top = translateY(rect.top);
         rect.right = translateX(rect.right);
@@ -112,7 +118,7 @@ public class OverlayGraphic extends GraphicOverlay.Graphic {
         canvas.drawRect(rect, sRectPaint);
 
         // Break the text into multiple lines and draw each one according to its own bounding box.
-        List<? extends Text> textComponents = text.getComponents();
+        List<? extends Text> textComponents = mText.getComponents();
         for(Text currentText : textComponents) {
             float left = translateX(currentText.getBoundingBox().left);
             float bottom = translateY(currentText.getBoundingBox().bottom);

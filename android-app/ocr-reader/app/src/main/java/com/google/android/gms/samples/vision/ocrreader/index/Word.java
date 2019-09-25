@@ -26,4 +26,8 @@ public class Word implements Serializable {
         occurences.add(occurence);
         return occurence;
     }
+
+    public List<WordOccurence> getOccurences() {
+        return occurences;
+    }
 }

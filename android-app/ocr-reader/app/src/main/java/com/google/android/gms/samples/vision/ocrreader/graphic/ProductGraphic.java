@@ -72,6 +72,14 @@ public class ProductGraphic extends GraphicOverlay.Graphic   {
         return (rect.left < x && rect.right > x && rect.top < y && rect.bottom > y);
     }
 
+    @Override
+    public String getText() {
+        if (mProduct == null) {
+            return null;
+        }
+        return mProduct.productCode;
+    }
+
     /**
      * Draws the text block annotations for position, size, and raw value on the supplied canvas.
      */

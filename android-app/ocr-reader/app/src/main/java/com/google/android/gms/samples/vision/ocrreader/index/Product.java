@@ -2,11 +2,13 @@ package com.google.android.gms.samples.vision.ocrreader.index;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Product implements Serializable {
     public final String productCode;
-    private final Map<String, WordOccurence> occurences = new HashMap<>();
+    private final Map<Word, WordOccurence> occurences = new HashMap<>();
 
     Product(String productCode) {
         this.productCode = productCode;
@@ -17,7 +19,11 @@ public class Product implements Serializable {
         return productCode.hashCode();
     }
 
-    void addOccurence(String text, WordOccurence occurence) {
-        occurences.put(text, occurence);
+    void addOccurence(Word word, WordOccurence occurence) {
+        occurences.put(word, occurence);
+    }
+
+    public Set<Word> getWords() {
+        return new HashSet<>(occurences.keySet());
     }
 }

@@ -12,12 +12,12 @@ class ProductIndex implements Serializable {
 
     }
 
-    public void addWordOcurence(String productCode, WordOccurence occurence) {
+    public void addWordOcurence(String productCode, Word word, WordOccurence occurence) {
         if (!products.containsKey(productCode)) {
             products.put(productCode, new Product(productCode));
         }
 
-        products.get(productCode).addOccurence(productCode, occurence);
+        products.get(productCode).addOccurence(word, occurence);
     }
 
     @Override

@@ -53,7 +53,7 @@ public final class IndexActivity extends AppCompatActivity  {
     private static final String TAG = "IndexActivity";
 
     private ImageView mPreview;
-    private GraphicOverlay<OverlayGraphic> mGraphicOverlay;
+    private GraphicOverlay mGraphicOverlay;
     private IndexProcessor processor;
 
     TextRecognizer textRecognizer;
@@ -73,7 +73,7 @@ public final class IndexActivity extends AppCompatActivity  {
 
 
         mPreview = (ImageView) findViewById(R.id.imageView);
-        mGraphicOverlay = (GraphicOverlay<OverlayGraphic>) findViewById(R.id.graphicOverlay);
+        mGraphicOverlay = (GraphicOverlay) findViewById(R.id.graphicOverlay);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         processor = new IndexProcessor(mGraphicOverlay);
         textRecognizer = createTextRecognizer();

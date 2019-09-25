@@ -6,11 +6,22 @@ import java.io.Serializable;
 
 class WordOccurence implements Serializable {
     private String productCode;
+
+
+
     private Rectangle normalizedRect;
 
     protected WordOccurence(String productCode, Rectangle normalizedRect) {
         this.productCode = productCode;
         this.normalizedRect = normalizedRect;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public Rectangle getNormalizedRect() {
+        return normalizedRect;
     }
 
 }

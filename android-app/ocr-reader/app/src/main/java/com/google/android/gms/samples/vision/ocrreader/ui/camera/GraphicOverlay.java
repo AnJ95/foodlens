@@ -43,7 +43,7 @@ import java.util.Set;
  * from the preview's coordinate system to the view coordinate system.</li>
  * </ol>
  */
-public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
+public class GraphicOverlay extends View {
     private final Object mLock = new Object();
     protected int mPreviewLeft;
     protected int mPreviewTop;
@@ -52,7 +52,7 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
     private int mPreviewHeight;
     private float mHeightScaleFactor = 1.0f;
     private int mFacing = CameraSource.CAMERA_FACING_BACK;
-    private Set<T> mGraphics = new HashSet<>();
+    private Set<GraphicOverlay.Graphic> mGraphics = new HashSet<>();
 
     /**
      * Base class for a custom graphics object to be rendered within the graphic overlay.  Subclass
@@ -123,6 +123,8 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
         public void postInvalidate() {
             mOverlay.postInvalidate();
         }
+
+        public abstract String getText();
     }
 
     public GraphicOverlay(Context context, AttributeSet attrs) {
@@ -142,7 +144,7 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
     /**
      * Adds a graphic to the overlay.
      */
-    public void add(T graphic) {
+    public void add(GraphicOverlay.Graphic graphic) {
         synchronized (mLock) {
             mGraphics.add(graphic);
         }
@@ -152,7 +154,7 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
     /**
      * Removes a graphic from the overlay.
      */
-    public void remove(T graphic) {
+    public void remove(GraphicOverlay.Graphic graphic) {
         synchronized (mLock) {
             mGraphics.remove(graphic);
         }
@@ -164,12 +166,12 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
      * These coordinates will be offset by the relative screen position of this view.
      * @return First graphic containing the point, or null if no text is detected.
      */
-    public T getGraphicAtLocation(float rawX, float rawY) {
+    public GraphicOverlay.Graphic getGraphicAtLocation(float rawX, float rawY) {
         synchronized (mLock) {
             // Get the position of this View so the raw location can be offset relative to the view.
             int[] location = new int[2];
             this.getLocationOnScreen(location);
-            for (T graphic : mGraphics) {
+            for (GraphicOverlay.Graphic graphic : mGraphics) {
                 if (graphic.contains(rawX - location[0], rawY - location[1])) {
                     return graphic;
                 }

@@ -73,7 +73,7 @@ public class BlockCaptureActivity extends AppCompatActivity {
 
     private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
-    protected GraphicOverlay<OverlayGraphic> mGraphicOverlay;
+    protected GraphicOverlay mGraphicOverlay;
 
     // Helper objects for detecting taps and pinches.
     private ScaleGestureDetector scaleGestureDetector;
@@ -88,7 +88,7 @@ public class BlockCaptureActivity extends AppCompatActivity {
         setContentView(R.layout.ocr_capture);
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
-        mGraphicOverlay = (GraphicOverlay<OverlayGraphic>) findViewById(R.id.graphicOverlay);
+        mGraphicOverlay = (GraphicOverlay) findViewById(R.id.graphicOverlay);
 
         // read parameters from the intent used to launch the activity.
         boolean autoFocus = getIntent().getBooleanExtra(AutoFocus, false);
@@ -327,13 +327,13 @@ public class BlockCaptureActivity extends AppCompatActivity {
      * @return true if the activity is ending.
      */
     private boolean onTap(float rawX, float rawY) {
-        OverlayGraphic graphic = mGraphicOverlay.getGraphicAtLocation(rawX, rawY);
-        TextBlock text = null;
+        GraphicOverlay.Graphic graphic = mGraphicOverlay.getGraphicAtLocation(rawX, rawY);
+        String text = null;
         if (graphic != null) {
-            text = graphic.getTextBlock();
-            if (text != null && text.getValue() != null) {
+            text = graphic.getText();
+            if (text != null) {
                 Intent data = new Intent();
-                data.putExtra(TextBlockObject, text.getValue());
+                data.putExtra(TextBlockObject, text);
                 setResult(CommonStatusCodes.SUCCESS, data);
                 finish();
             }

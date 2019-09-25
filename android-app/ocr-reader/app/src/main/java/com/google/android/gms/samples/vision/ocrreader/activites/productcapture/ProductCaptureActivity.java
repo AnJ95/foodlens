@@ -15,11 +15,12 @@ public class ProductCaptureActivity extends BlockCaptureActivity {
     com.google.android.gms.samples.vision.ocrreader.index.Index index;
 
     public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
 
         index = (Index) getIntent().getSerializableExtra(Index);
+        super.onCreate(icicle);
 
         Log.d(TAG, "Received " + index);
+
     }
 
     @Override

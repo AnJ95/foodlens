@@ -45,7 +45,7 @@ public class IndexProcessor extends BlockCaptureProcessor {
     private Index index = new Index();
 
 
-    IndexProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay) {
+    IndexProcessor(GraphicOverlay ocrGraphicOverlay) {
         super(ocrGraphicOverlay);
     }
 
