@@ -5,6 +5,7 @@ import android.util.SparseArray;
 
 import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.BlockCaptureProcessor;
 import com.google.android.gms.samples.vision.ocrreader.graphic.OverlayGraphic;
+import com.google.android.gms.samples.vision.ocrreader.index.Index;
 import com.google.android.gms.samples.vision.ocrreader.index.Product;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.samples.vision.ocrreader.index.Word;
@@ -17,8 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProductCaptureProcessor extends BlockCaptureProcessor {
-    public ProductCaptureProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay) {
+    private final Index mIndex;
+
+    public ProductCaptureProcessor(GraphicOverlay<OverlayGraphic> ocrGraphicOverlay, Index index) {
         super(ocrGraphicOverlay);
+        this.mIndex = index;
     }
 
     @Override
@@ -35,8 +39,15 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
             TextBlock textBlock = textBlocks.valueAt(t);
             for (Text line : textBlock.getComponents()) {
                 for (Element elem : (Iterable<Element>) line.getComponents()) {
+                    
                     Rect rect = elem.getBoundingBox();
+                    String text = elem.getValue();
+                    
+                    
 
+
+                    //OverlayGraphic graphic = new OverlayGraphic(mGraphicOverlay, product, unionRect);
+                    //mGraphicOverlay.add(graphic);
                 }
             }
         }
