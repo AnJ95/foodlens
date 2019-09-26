@@ -18,7 +18,7 @@ https://globalgamejam.org/users/maschm - gemeinsam programmierte frei verfügbar
 
 **Projekttitel** *Max. 70 Zeichen*
 
-SUPER OPEN AR FAKTEN FOOD MARKT 
+SupermARkt
 
 
 **Beschreibe Dein Projekt kurz.** *Max. 700 Zeichen*
@@ -58,10 +58,11 @@ Als Proof-of-Concept für unseren Ansatz der textbasierten Bilderkennung haben w
 
 **Skizziere kurz die wichtigsten Meilensteine, die Du (bzw. das Team) im Förderzeitraum umsetzen willst.** *Max. 700 Zeichen*
 
-Protoprototyp mit wenigen Produkten?
-Produkterkennung + Infos
-AR Shit
-
+1. Andrioid-App, die Produkt- und Markenname extrahiert und in einer AR-Ansicht anzeigt
+2. Anbindung an die OpenFoodFacts-Datenbank und ihre Suche -> Funktionierende Produkterkennung mit primitiver Info-Anzeige
+3. Integration zentraler Informationsanzeigen und anderer App-Funktionen -> Erster voll funktionsfähiger Prototyp  
+4. Veröffentlichung der App in Googles Play Store 
+5. Erste 1000 Nutzer durch gezielte Präsentation in online-communities und Freundeskreisen
 
 -------------------------------- EXTRA -----------------------------------
 
