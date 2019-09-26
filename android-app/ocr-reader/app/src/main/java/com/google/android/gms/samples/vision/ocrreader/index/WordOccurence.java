@@ -4,7 +4,7 @@ import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 
 import java.io.Serializable;
 
-class WordOccurence implements Serializable {
+public class WordOccurence implements Serializable {
     private String productCode;
 
 
@@ -24,4 +24,8 @@ class WordOccurence implements Serializable {
         return normalizedRect;
     }
 
+    @Override
+    public int hashCode() {
+        return 13*productCode.hashCode() + 23*normalizedRect.hashCode();
+    }
 }

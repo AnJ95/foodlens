@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Product implements Serializable {
     public final String productCode;
-    private final Map<Word, WordOccurence> occurences = new HashMap<>();
+    private final Map<Word, Set<WordOccurence>> occurences = new HashMap<>();
 
     Product(String productCode) {
         this.productCode = productCode;
@@ -24,7 +24,8 @@ public class Product implements Serializable {
     }
 
     void addOccurence(Word word, WordOccurence occurence) {
-        occurences.put(word, occurence);
+        if (!occurences.containsKey(word)) { occurences.put(word, new HashSet<WordOccurence>()); }
+        occurences.get(word).add(occurence);
     }
 
     public Set<Word> getWords() {
@@ -37,5 +38,9 @@ public class Product implements Serializable {
             words.add(word.toString());
         }
         return "Product(" + productCode + ", " + occurences.size() + " words: {" + TextUtils.join(", ", words) + "})";
+    }
+
+    public Map<Word, Set<WordOccurence>> getWordsAndOccurences() {
+        return occurences;
     }
 }

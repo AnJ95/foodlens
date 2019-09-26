@@ -9,6 +9,8 @@ import com.google.android.gms.samples.vision.ocrreader.activites.blockcapture.Bl
 import com.google.android.gms.samples.vision.ocrreader.graphic.ProductGraphic;
 import com.google.android.gms.samples.vision.ocrreader.index.Index;
 import com.google.android.gms.samples.vision.ocrreader.index.Product;
+import com.google.android.gms.samples.vision.ocrreader.index.WordOccurence;
+import com.google.android.gms.samples.vision.ocrreader.primitive.Rectangle;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.samples.vision.ocrreader.index.Word;
 import com.google.android.gms.vision.Detector;
@@ -43,8 +45,7 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
 
         SparseArray<TextBlock> textBlocks = detections.getDetectedItems();
 
-        Map<Product, Set<Word>> matchingWords = new HashMap<>();
-        Map<Word, Rect> boundingBoxes = new HashMap<>();
+        Map<Product, Map<Word, Set<Rect>>> matchingWords = new HashMap<>();
 
         // iterate Elements in Lines in TextBlocks
         // keep track of minimum bounding rect to normalize
@@ -61,14 +62,12 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
                     if (word != null) {
                         List<Product> products = mIndex.getProductsWithWord(word);
                         for (Product product : products) {
-                            // Create List for the product if not exists
-                            if (!matchingWords.containsKey(product)) {
-                                matchingWords.put(product, new HashSet<Word>());
-                            }
-                            // Add Word to this product
-                            matchingWords.get(product).add(word);
-
-                            boundingBoxes.put(word, rect);
+                            // Create Map for the product if not exists
+                            if (!matchingWords.containsKey(product)) { matchingWords.put(product, new HashMap<Word, Set<Rect>>()); }
+                            // Create Set for this words found bounding boxes (when same word found multiple times!)
+                            if (!matchingWords.get(product).containsKey(word)) { matchingWords.get(product).put(word, new HashSet<Rect>()); }
+                            // Add Rect of this Word to the product
+                            matchingWords.get(product).get(word).add(rect);
                         }
                     }
                 }
@@ -78,44 +77,29 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
 
         Queue<PossibleMatch> matches = new PriorityQueue<>();
         // Iterate each product candidate
-        //   and its respective words
-        for (Map.Entry<Product, Set<Word>> entry : matchingWords.entrySet()) {
+        //   and create data structure for possible match
+        for (Map.Entry<Product, Map<Word, Set<Rect>>> entry : matchingWords.entrySet()) {
             Product product = entry.getKey();
-            Set<Word> wordsFound = entry.getValue();
-            Set<Word> wordsExpected = mIndex.getWordsForProduct(product);
+            Map<Word, Set<Rect>> foundWordBoundingBoxes = entry.getValue();
 
-            // calc bounding box of product
-            Rect productBB = null;
-
-            // calc some metrics
-            int numExpectedWords = wordsExpected.size();
-            int numFoundWords = wordsFound.size();
-
-            // calc (lengthBefore - lengthAfter) to ignore unwanted duplicates in wordsFound
-            int lengthBefore = wordsExpected.size();
-            for (Word word : wordsFound) {
-                wordsExpected.remove(word); // remove to count
-
-                Rect wordBB = boundingBoxes.get(word);
-                if (productBB == null) {
-                    productBB = wordBB;
-                } else {
-                    productBB.union(wordBB);
-                }
-
-            }
-            int lengthAfter = wordsExpected.size();
-
-            // "How many of the expected Words fit?"
-            float fracOfExpectedWords = (lengthBefore - lengthAfter) / (float) numExpectedWords;
-
-            matches.add(new PossibleMatch(product, productBB, fracOfExpectedWords));
+            matches.add(new PossibleMatch(product, foundWordBoundingBoxes));
         }
+
+        PossibleMatch match;
+        /*
+        Queue<PossibleMatch> reducedMatches = new PriorityQueue<>();
+        while ((match = matches.poll()) != null) {
+            Map<Word, Set<Rect>> found = match.possibleWords;
+            Map<Word, Set<WordOccurence>> expected = match.product.getWordsAndOccurences();
+            //match.product.getWordsAndOccurences()
+        }
+        */
 
         // Make sure nothing overlaps
         //   by starting with high confidence
+        //   and removing PossibleMatches that intersect
+        //   with previous PossibleMatches
         mGraphicOverlay.clear();
-        PossibleMatch match;
         List<Rect> chosenRects = new LinkedList<>();
         while ((match = matches.poll()) != null) {
 
@@ -139,13 +123,46 @@ public class ProductCaptureProcessor extends BlockCaptureProcessor {
 
     private class PossibleMatch implements Comparable<PossibleMatch> {
         private final Product product;
-        private final Rect productBB;
-        private final float confidence;
+        private Rect productBB;
+        private float confidence;
+        private Map<Word, Set<Rect>> possibleWords;
 
-        private PossibleMatch(Product product, Rect productBB, float confidence) {
+        private PossibleMatch(Product product, Map<Word, Set<Rect>> possibleWords) {
             this.product = product;
-            this.productBB = productBB;
-            this.confidence = confidence;
+            this.possibleWords = possibleWords;
+            this.update();
+        }
+
+        private void update() {
+            // update bounding box
+            productBB = null;
+            for (Set<Rect> rects : possibleWords.values()) {
+                for (Rect rect : rects) {
+                    if (productBB == null) {
+                        productBB = rect;
+                    } else {
+                        productBB.union(rect);
+                    }
+                }
+            }
+
+
+            // calc confidence
+            //   by checking how many of the expected words are found
+            //   beware: product could have same word multiple times!
+            int numExpectedWords = 0;
+            int numFoundWords = 0;
+            for (Word word : product.getWordsAndOccurences().keySet()) {
+                int numOccurencesOfThisWord = product.getWordsAndOccurences().get(word).size();
+                numExpectedWords += numOccurencesOfThisWord;
+                numFoundWords += Math.min(numOccurencesOfThisWord,
+                        possibleWords.containsKey(word) ? possibleWords.get(word).size() : 0
+                );
+            }
+            confidence = numFoundWords / (float) numExpectedWords;
+
+
+
         }
 
         @Override

@@ -19,4 +19,13 @@ public class Rectangle<T> implements Serializable {
     public String toString() {
         return "Rectangle("+left+"x"+top+"-"+right+"x"+bottom+")";
     }
+
+    @Override
+    public int hashCode() {
+        return
+                13 * left.hashCode() +
+                17 * top.hashCode() +
+                23 * right.hashCode() +
+                29 * bottom.hashCode();
+    }
 }
