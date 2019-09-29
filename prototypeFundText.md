@@ -18,8 +18,7 @@ https://globalgamejam.org/users/maschm - gemeinsam programmierte frei verfügbar
 
 **Projekttitel** *Max. 70 Zeichen*
 
-SupermARkt
-
+FoodLens
 
 **Beschreibe Dein Projekt kurz.** *Max. 700 Zeichen*
 
@@ -33,14 +32,14 @@ Der Bericht des IPCCs hängt wie ein Schatten über den Köpfen der Menschen und
 
 **Wie willst Du Dein Projekt technisch umsetzen?** *Max. 1300 Zeichen*  
 
-Zentrales Element unseres Projekts ist eine Mobile-App, die der Nutzer während des Einkaufvorgangs im Supermarkt als Assistenten verwendet und die die Kamera des Geräts zur Erfassung von Produkten nutzt. Erkannte Produkte werden erstmals in einer AR Experience präsentiert, was eine einheitliche Darstellung der Produkdaten vereinfacht sowie Vergleiche zwischen Produkten ohne Ablenkung durch deren Design ermöglicht.
+Zentrales Element unseres Projekts ist eine Mobile-App, die der Nutzer während des Einkaufvorgangs im Supermarkt als Assistenten verwendet und die die Kamera des Geräts zur Erfassung von Produkten nutzt. Erkannte Produkte werden in einer AR Experience präsentiert, was eine einheitliche Darstellung der Produkdaten vereinfacht sowie Vergleiche zwischen Produkten ohne Ablenkung durch deren Design ermöglicht.
 Bezüglich der Bilderkennung möchten wir unseren wissenschaftlichen Hintergrund nutzen, um eine für den Anwendungsfall spezialisierte Produkt- und Texterkennung zu entwickeln, die auf dem neuesten Stand der Technik arbeitet. Hierbei werden in Echtzeit die Texte der Verpackungen - unter anderem Produkt- und Markenname - erkannt.
-Technisch kann hier mit bewährten Lösungen wie z.B. Googles ML Kit oder einem eigens entworfenen maschnellem Lernalgorithmus via Tensorflow Lite gearbeitet werden.
+Technisch kann hier mit bewährten Lösungen wie z.B. Googles Mobile Vision oder einem eigens entworfenen maschinellem Lernalgorithmus mit Tensorflow Lite gearbeitet werden.
 Die Produktinformationen beziehen wir aus der quelloffenen Datenbank OpenFoodFacts; sie bietet über 34.000 Supermarkt-Produkte alleine im deutschprachigen Raum. Der Datensatz enthält pro Produkt die Inhaltsstoffe und Nährwertangaben sowie eine Fülle an zusätzlichen Informationen und mehrere Fotos der Verpackung.
 
 **Welche ähnlichen Lösungen gibt es schon, und was wird Dein Projekt anders bzw. besser machen?** *Max. 400 Zeichen*
 
-Die OpenFoodFacts App und proprietäre Anbieter wie codecheck oder barcoo verwenden für die Erkennung der Produkte den Barcode. Unsere App bietet im Gegensatz zur Erkennung des nicht immer eindeutigen Barcodes zusätzlich eine robuste Bilderkennung. Außerdem werden die Informationen mittels AR direkt in das Kamerabild integriert und erleichten somit den Vergleich von Produkten im Supermarktregal.
+Die OpenFoodFacts App und proprietäre Anbieter wie codecheck oder barcoo verwenden für die Erkennung der Produkte den Strichcode. Unsere App bietet im Gegensatz zur Erkennung des nicht immer eindeutigen Strichcode zusätzlich eine robuste Bilderkennung. Außerdem werden die Informationen mittels AR direkt in das Kamerabild integriert und erleichtern somit den Vergleich von Produkten im Supermarktregal.
 
 
 **Wer ist die Zielgruppe und wie soll Dein Tool sie erreichen?** *Max. 700 Zeichen*
@@ -50,19 +49,18 @@ Heutzutage führt praktisch jeder Supermarktkunde sein Handy mit und käme damit
 **Hast Du schon an der Idee gearbeitet? Wenn ja, beschreibe kurz den aktuellen Stand und erkläre die Neuerung.** *Max. 700 Zeichen*
 
 Der Anmeldung ging eine Recherche über schon existierende Lösungen sowie mögliche Kollaborationen voraus. Hierbei haben wir mit codecheck Kontakt aufgenommen und ein "Angebot" bekommen, deren Datenbank zu mieten (1000 Anfragen pro Tag für 300€ im Monat). Danach wurden wir auf die unter der Open Database License verfügbaren Daten von OpenFoodFacts aufmerksam.
-Als Proof-of-Concept für unseren Ansatz der textbasierten Bilderkennung haben wir bereits einen Prototypen entwickelt. Es handelt sich um eine Android-App welche 100 Produkte per Bilderkennung erkennen und mit einer Framerate von X in einer simplen AR-Ansicht anzeigen kann. Hierfür haben wir bereits die OpenFoodFacts Datenbank verwendet.
+Als Proof-of-Concept für unseren Ansatz der textbasierten Bilderkennung haben wir bereits einen Prototypen entwickelt. Es handelt sich um eine Android-App welche 100 Produkte in unter einer Sekunde mit Bilderkennung erkennen und in einer simplen AR-Ansicht anzeigen kann. Hierfür haben wir bereits die OpenFoodFacts Datenbank verwendet.
 
 **Wie viele Stunden willst Du (bzw. will das Team) in den 6 Monaten Förderzeitraum an der Umsetzung arbeiten?** *Bitte eine Zahl eintragen.*
-6 Monate 40h 3 Personen = 720h
-6 Monate 60h 3 Personen = 1080h
+1080
 
 **Skizziere kurz die wichtigsten Meilensteine, die Du (bzw. das Team) im Förderzeitraum umsetzen willst.** *Max. 700 Zeichen*
 
-1. Andrioid-App, die Produkt- und Markenname extrahiert und in einer AR-Ansicht anzeigt
-2. Anbindung an die OpenFoodFacts-Datenbank und ihre Suche -> Funktionierende Produkterkennung mit primitiver Info-Anzeige
-3. Integration zentraler Informationsanzeigen und anderer App-Funktionen -> Erster voll funktionsfähiger Prototyp  
-4. Veröffentlichung der App in Googles Play Store 
-5. Erste 1000 Nutzer durch gezielte Präsentation in online-communities und Freundeskreisen
+1. App, die Produktname und weitere Texte extrahiert und in einer AR-Ansicht anzeigt.
+2. Anbindung an die OpenFoodFacts-Datenbank und ihre Suche -> Funktionierende Produkterkennung mit primitiver Info-Anzeige.
+3. Integration zentraler Informationsanzeigen und anderer App-Funktionen -> Erster voll funktionsfähiger Prototyp.
+4. Veröffentlichung der App in den Apple Stores.
+5. Erste 1000 Nutzer durch gezielte Präsentation in Online-Communities und Freundeskreisen.
 
 -------------------------------- EXTRA -----------------------------------
 
