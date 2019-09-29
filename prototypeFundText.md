@@ -39,7 +39,7 @@ Die Produktinformationen beziehen wir aus der quelloffenen Datenbank OpenFoodFac
 
 **Welche ähnlichen Lösungen gibt es schon, und was wird Dein Projekt anders bzw. besser machen?** *Max. 400 Zeichen*
 
-Die OpenFoodFacts App und proprietäre Anbieter wie codecheck oder barcoo verwenden für die Erkennung der Produkte den Strichcode. Unsere App bietet im Gegensatz zur Erkennung des nicht immer eindeutigen Strichcode zusätzlich eine robuste Bilderkennung. Außerdem werden die Informationen mittels AR direkt in das Kamerabild integriert und erleichtern somit den Vergleich von Produkten im Supermarktregal.
+Die OpenFoodFacts App und proprietäre Anbieter wie codecheck oder barcoo verwenden für die Erkennung der Produkte den Strichcode. Unsere App bietet im Gegensatz zur Erkennung des nicht immer eindeutigen Strichcode zusätzlich eine robuste Bilderkennung. Zudem werden die Informationen mittels AR direkt in das Kamerabild integriert und erleichtern somit den Vergleich von Produkten im Supermarktregal.
 
 
 **Wer ist die Zielgruppe und wie soll Dein Tool sie erreichen?** *Max. 700 Zeichen*
